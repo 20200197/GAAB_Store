@@ -5,9 +5,9 @@
     <!--Importar fuentes de Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_noticias.min.css"
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_reseña.min.css"
         media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_noticias.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_reseña.css" media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,13 +39,13 @@
                 <div class="col s4 m4 " id="todo">
                     <div class="col s2 m6"></div>
                     <!--Insertamos botones junto a buscador-->
-                    <div class="col s1 m6 l8 " id="botones" >
+                    <div class="col s1 m6 l8" id="botones">
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
                             <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
                                         src="../img/icono/shopping_cart_25px.png"></a></li>
 
 
-                            <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
+                            <li><a class="waves-effect waves-red btn-danger" id="boton2">LOG IN</a></li>
 
 
                             <li><a class="waves-effect waves-red btn-danger" id="boton3"><img
@@ -132,37 +132,102 @@
 
             </div>
         </ul>
-
-
         </div>
     </header>
 
 
     <main>
-        <!--Colocamos navegador lateral-->
-        <div class="hide-on-med-and-down" id="navegador_lateral">
-            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
-                    src="../img/icono/menu_25pxbl.png"></a>
-        </div>
+        <!--Espacio para comentarios-->
+        <div clas="container" id="contenedor">
+            <div class="row">
+                <div class="col s12 m12">
+                    <!--Colocamos espacio para que usuarios califiquen sus productos comprados-->
+                    <h1 id="titulo">Reseñas</h1>
+                    <h5>Seria un honor que calificaras nuestros productos:</h5>
+                    &nbsp;
+                    <h6>Luces LED</h6>
+                    <a class="waves-effect  btn-large" href="#" id="voto_1">1</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_2">2</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_3">3</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_4">4</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_5">5</a>
 
+                    <h6>Forro para llantas</h6>
+                    <a class="waves-effect  btn-large" href="#" id="voto_1">1</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_2">2</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_3">3</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_4">4</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_5">5</a>
 
-        <!--Colocamos slider de ofertas-->
-        <div class="slider" id="imagen_inicio">
-            <ul class="slides">
-                <li>
-                    <img src="../img/slider/oferta_primera.png" class="responsive-img">
-                    <div class="caption right-align black-text">
+                    <h6>Espejos led</h6>
+                    <a class="waves-effect  btn-large" href="#" id="voto_1">1</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_2">2</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_3">3</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_4">4</a>
+                    <a class="waves-effect  btn-large" href="#" id="voto_5">5</a>
+                </div>
+
+                &nbsp;
+                <div class="row">
+                    <h5>Comentarios:</h5>
+                    <div class="row">
+                        <form class="col s12">
+                            <label>01/02/21</label>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <img src="../img/imagenes/personaje_35_px.png" class="prefix">
+                                    <textarea disabled id="icon_prefix2"
+                                        class="materialize-textarea ">Me encanta mucho</textarea>
+                                    <button class="btn-flat waves-effect waves-light prefix" type="submit" name="action"
+                                        id="enviar">
+                                    </button>
+                                </div>
+                            </div>
+                            <span class="btn-flat waves-effect waves-light prefix" type="submit"
+                                name="action">Responder</span>
+
+                            <div class="col s12">
+                                <form class="col s12">
+                                    <label>01/02/21</label>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <img src="../img/imagenes/personaje_35_px.png" class="prefix">
+                                            <textarea disabled id="icon_prefix2"
+                                                class="materialize-textarea ">Si</textarea>
+                                            <button class="btn-flat waves-effect waves-light prefix" type="submit"
+                                                name="action" id="enviar">
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <span class="btn-flat waves-effect waves-light prefix" type="submit"
+                                        name="action">Responder</span>
+                                </form>
+                            </div>
+
+                        </form>
+
 
                     </div>
-                </li>
-                <li>
-                    <img src="../img/slider/oferta_segunda.png" class="responsive-img">
-                    <div class="caption left-align">
+                    <div class="row">
+                        <h5>Comentar:</h5>
+                        <!--Caja para comentar-->
+                        <form class="col s12">
+                            <label>00/00/00</label>
+                            <div class="row">
+                                <div class="input-field col s6">
+                                    <img src="../img/imagenes/personaje_35_px.png" class="prefix">
+                                    <textarea id="icon_prefix2" class="materialize-textarea "></textarea>
+                                    <label for="icon_prefix2">Comentar</label>
+                                    <button class="btn-flat waves-effect waves-light prefix" type="submit" name="action"
+                                        id="enviar"><img src="../img/icono/enviar_35_px.png">
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                </li>
-            </ul>
+                </div>
+            </div>
         </div>
-      <img src="../img/slider/ofertas_ofertas.png" class="responsive-img">
     </main>
     <!--Agregamos el footer-->
     <footer class="page-footer" id="footer_final">
@@ -218,8 +283,8 @@
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../js/sitio_publico/gaab_store_noticias.min.js"></script>
-    <script type="text/javascript" src="../js/sitio_publico/noticias.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/gaab_store_reseña.min.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/reseña.js"></script>
 
 </body>
 
