@@ -5,9 +5,9 @@
     <!--Importar fuentes de Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_noticias.min.css"
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_carrito.min.css"
         media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_noticias.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_carrito.css" media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,39 +19,43 @@
         <!--Colocamos encabezado-->
         <nav class="nav-extended" id="encabezado">
             <div class="row" id="otro">
-                <div class="col s12 m1 " id="nave">
-                    <div class="nav-wrapper">
-                        <!--Insertamos logo de GAAB Store-->
-                        <a href="#" class="brand-logo"><img src="../img/logo/logo_gaab_white_png_105.png"></a>
-                        <!--Insertamos navegador lateral-->
-                        <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><img
-                                src="../img/icono/menu_25px.png"></a>
+                <div class="col s12 m12">
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div class="nav-wrapper">
+                                <!--Insertamos logo de GAAB Store-->
+                                <a href="#" class="brand-logo"><img src="../img/logo/logo_gaab_white_png_105.png"></a>
+                                <!--Insertamos navegador lateral-->
+                                <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><img
+                                        src="../img/icono/menu_25px.png"></a>
+                            </div>
+                        </div>
+                        <div class="col  m1"></div>
+ 
+                        <div class="col s12 m4">
+ 
+                            <div class="col s1 m1">
+                                <img src="../img/icono/search_25px.png">
+                            </div>
+                            <div class="col s10 m4">
+                                <input placeholder="textea un producto a buscar..." id="buscador" type="search"
+                                    class="validate prefix">
+                            </div>
+                        </div>
+ 
+                        <div class="col s4 m4">
+                            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                                <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
+                                            src="../img/icono/shopping_cart_25px.png"></a></li>
+ 
+                                <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
+ 
+                                <li><a class="waves-effect waves-red btn-danger dropdown-trigger"
+                                        data-target="dropdown"><img src="../img/icono/user_35px.png"></a></li>
+ 
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col s2 m4 l3"></div>
-                <div class="col s12 m4 " id="buscador_espacio">
-                    <!--Insertamos buscador con imagen al lado-->
-                    <img src="../img/icono/search_25px.png">
-                    <input placeholder="textea un producto a buscar..." id="buscador" type="search" class="validate"
-                      >
-                        &nbsp;
-                </div>
-                <div class="col s4 m4 " id="todo">
-                    <div class="col s2 m6"></div>
-                    <!--Insertamos botones junto a buscador-->
-                    <div class="col s1 m6 l8 " id="botones" >
-                        <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
-                                        src="../img/icono/shopping_cart_25px.png"></a></li>
-
-
-                            <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
-
-
-                            <li><a class="waves-effect waves-red btn-danger" id="boton3"><img
-                                        src="../img/icono/user_35px.png"></a></li>
-                    </div>
-                    </ul>
                 </div>
             </div>
             <div class=" hide-on-med-and-down" id="menus">
@@ -131,11 +135,18 @@
                 </li>
 
             </div>
+
             <li><a href="" class="waves-effect waves-red btn-danger">Log in</a></li>
         </ul>
 
 
         </div>
+
+         <!--Opciones de menú desplegable-->
+         <ul id='dropdown' class='dropdown-content'>
+            <li><a href="#!">Editar perfil</a></li>
+            <li><a href="#!">Cerrar Sesión</a></li>
+        </ul>
     </header>
 
 
@@ -146,24 +157,47 @@
                     src="../img/icono/menu_25pxbl.png"></a>
         </div>
 
-
-        <!--Colocamos slider de ofertas-->
-        <div class="slider" id="imagen_inicio">
-            <ul class="slides">
-                <li>
-                    <img src="../img/slider/oferta_primera.png" class="responsive-img">
-                    <div class="caption right-align black-text">
-
+        <!--Colocamos imagen de inicio con texto-->
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m10">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-title">Carrito de compra</div>
+                            <div class="divider"></div>
+                            <div class="row">
+                                <div class="col s12 m2">
+                                    <img class="responsive-img" src="../img/imagenes/forro.jpg">
+                                </div>
+                                <div class="col s12 m10">
+                                    <div class="row">
+                                        <div class="col s12 m10">
+                                            <h5>forro para auto</h5>
+                                        </div>
+                                        <div class="col s4 m1">
+                                            <a href="#" class="eliminar">Eliminar</a>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m3">
+                                            <p>Precio: $0.00</p>
+                                            <p>Cantidad: 1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                
+                            </div>
+                            
+                        </div>
                     </div>
-                </li>
-                <li>
-                    <img src="../img/slider/oferta_segunda.png" class="responsive-img">
-                    <div class="caption left-align">
-                    </div>
-                </li>
-            </ul>
+                </div>
+                <div class="col s12 m2">
+                    
+                </div>
+            </div>
         </div>
-      <img src="../img/slider/ofertas_ofertas.png" class="responsive-img">
     </main>
     <!--Agregamos el footer-->
     <footer class="page-footer" id="footer_final">
@@ -219,8 +253,8 @@
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../js/sitio_publico/gaab_store_noticias.min.js"></script>
-    <script type="text/javascript" src="../js/sitio_publico/noticias.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/gaab_store_carrito.min.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/carrito.js"></script>
 
 </body>
 
