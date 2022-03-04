@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../css/sitio_privado/gaab_store_tipo_usuario.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/sitio_privado/styles_tipo_usuario.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+
+        <!--Colocamos encabezado-->
+        <nav class="nav-extended" id="encabezado">
+            <div class="row" id="otro">
+                <div class="col s12 m1 " id="nave">
+                    <div class="nav-wrapper">
+                        <!--Insertamos logo de GAAB Store-->
+                        <a href="#" class="brand-logo"><img src="../img/logo/logo_gaab_white_png_105.png"></a>
+                        <!--Insertamos navegador lateral-->
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><img
+                                src="../img/icono/menu_25px.png"></a>
+                    </div>
+                </div>
+                <div class="col s2 m4 l3"></div>
+                <div class="col s12 m4 " id="buscador_espacio">
+
+                </div>
+                <div class="col s4 m4 " id="todo">
+                    <div class="col s2 m6"></div>
+                    <!--Insertamos botones junto a buscador-->
+                    <div class="col s1 m6 l8" id="botones">
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+                            <li><a class="waves-effect waves-red btn-danger" id="boton2">LOG IN</a></li>
+
+
+                            <li><a class="waves-effect waves-red btn-danger" id="boton3"><img
+                                        src="../img/icono/user_35px.png"></a></li>
+                    </div>
+                    </ul>
+                </div>
+            </div>
+            <div class=" hide-on-med-and-down" id="menus">
+                <!--Insertamos un navegador de contenido con los menus visibles para publico-->
+                <div class="nav-content">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab" id="tabla1"><a href="#test1">Inicio</a></li>
+                        <li class="tab" id="tabla2"><a href="#test2">Administrar empleados</a></li>
+                        <li class="tab" id="tabla3"><a href="#test3">Administrar clientes</a></li>
+                        <li class="tab" id="tabla4"><a href="#test4">Administrar categoria</a></li>
+                        <li class="tab" id="tabla5"><a href="#test5">Administrar tipo de auto</a></li>
+                        <li class="tab" id="tabla6"><a href="#test6">Tipo de usuario</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--Insertamos las opciones del navegador lateral-->
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../img/imagenes/fondo.png">
+                    </div>
+                    <a href="#user"><img class="circle" src="../img/imagenes/personaje.png"></a>
+                    <a href="#name"><span class="white-text name">John Doe</span></a>
+                    <a href="#email"><span class="white-text email">ejemplo@gmail.com</span></a>
+                </div>
+            </li>
+
+            <li><a href="#!" class="waves-effect waves-red btn-danger">Administrar empleados</a></li>
+            <li><a href="" class="waves-effect waves-red btn-danger">Administrar clientes</a></li>
+            <li><a href="" class="waves-effect waves-red btn-danger">Adminitrar categoria</a></li>
+            <li><a href="" class="waves-effect waves-red btn-danger">Administrar tipo de auto</a></li>
+            <li><a href="" class="waves-effect waves-red btn-danger">Tipo de usuario</a></li>
+            <li>
+                <div class="divider"></div>
+            <li><a href="#!" class="waves-effect waves-red btn-danger">Log in</a></li>
+            </li>
+
+        </ul>
+
+
+        </div>
+    </header>
+
+
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../img/icono/menu_25pxbl.png"></a>
+        </div>
+
+
+
+
+        <div class="container ">
+            <h3 id="titulo">Tipo Usuario</h3>
+            <!--Tabla de clientes-->
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Modificar datos</th>
+                        <th>Gestion datos de venta</th>
+                        <th>Agregar datos de venta</th>
+                        <th>Gestionar usuario</th>
+
+                    </tr>
+                </thead>
+
+                <!--Cuerpo de tabla-->
+                <tbody>
+                    <tr>
+                        <td><img src="../img/icono/user_25px.png"></td>
+                        <td>Administrador</td>
+
+                        <td>Activo</td>
+                        <td>Activo</td>
+                        <td>Activo</td>
+                        <td>
+                            <!-- Dropdown Trigger -->
+                            <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
+
+                            <!-- Dropdown Structure -->
+                            <ul id='dropdown1' class='dropdown-content'>
+                                <li><a href="#!">one</a></li>
+                                <li><a href="#!">two</a></li>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td><img src="../img/icono/user_25px.png"></td>
+                        <td>Cliente</td>
+                        <td>Desactivado</td>
+                        <td>Desactivado</td>
+                        <td>Desactivado</td>
+                        <td>Desactivado</td>
+                    </tr>
+                    <tr>
+                        <td><img src="../img/icono/user_25px.png"></td>
+                        <td>Empleados</td>
+                        <td>Activo</td>
+                        <td>Desactivado</td>
+                        <td>Activo</td>
+                        <td>Desactivado</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="col s12 m12" id="imagen3">
+                <a class="btn ">Guardar</a>
+
+                <!--ModalEliminar-->
+                <div id="modal1" class="modal">
+                    <div class="modal-content">
+                        <div class="row">
+                            <div class="col s12 m12">
+                                <h5 id="titulo">Editar empleado</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                    </div>
+                </div>
+
+                <!--ModalEditar-->
+                <div id="modal2" class="modal">
+                    <div class="modal-content">
+                        <div class="row" id="contorno">
+                            <div class="col s12 m12">
+                                <h5 id="titulo">Editar empleado</h5>
+
+
+                                <div class="col s12 m4" id="imagen">
+                                    <img src="../img/imagenes/imagen.jpg">
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <a class="btn ">Subir imagen</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col s12 m4">
+                                    <h6>Nombre:</h6>
+                                    <div class="input-field col s12 m12">
+                                        <input placeholder="Jose Jose">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <h6>Apellido:</h6>
+                                            <div class="input-field col s12 m12">
+                                                <input placeholder="Pérez Pérez">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <h6>Télefono:</h6>
+                                            <div class="input-field col s12 m12">
+                                                <input placeholder="7878-7878">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!--Columna siguiente-->
+                                <div class="col s12 m4">
+                                    <h6>Estado:</h6>
+                                    <div class="input-field col s12 m12">
+                                        <input placeholder="Activo">
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <h6>Correo:</h6>
+                                            <div class="input-field col s12 m12">
+                                                <input placeholder="jose@gmail.com">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m12">
+                                            <h6>Dui:</h6>
+                                            <div class="input-field col s12 m12">
+                                                <input placeholder="1111-1111-1">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Guardar</a>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    </div>
+                </div>
+
+    </main>
+
+    <!--Insertamos derechos de autor-->
+    <div class="footer-copyright" id="footer_final">
+        <div class="container">
+            © 2022 Copyright
+        </div>
+    </div>
+    <!--JavaScript al final de body para optimizar-->
+    <script type="text/javascript" src="../js/sitio_privado/gaab_store_adminClientes.min.js"></script>
+    <script type="text/javascript" src="../js/sitio_privado/adminClientes.js"></script>
+
+</body>
+
+</html>
