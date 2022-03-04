@@ -13,6 +13,31 @@ body {
   padding-left: 175px;
 }
 
+.container{
+  margin-top: 80px;
+}
+
+
+#boton_ingresar{
+  width: 300px;
+  align-self: center;
+  background-color: #7c75db;
+  border-radius: 20px;
+}
+
+#boton_registrar{
+  width: 300px;
+  align-self: center;
+  background-color: #7c75db;
+  border-radius: 20px;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 #boton1 {
 
   background-color:#FFFFFF ;

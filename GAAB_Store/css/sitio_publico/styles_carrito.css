@@ -13,8 +13,21 @@ body {
   padding-left: 175px;
 }
 
-#boton1 {
+.responsive-img{
+  max-width: 100%;
+  height: auto;
+}
 
+.eliminar{
+  color: #aaaaaa;
+  font-style: italic;
+}
+
+.container{
+  margin-top: 60px;
+}
+
+#boton1 {
   background-color:#FFFFFF ;
   color: black;
   border-bottom-right-radius:30px ;
