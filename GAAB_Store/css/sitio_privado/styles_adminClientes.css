@@ -124,7 +124,7 @@ border-top-right-radius: 30px;
 }
 
 #modal2{
-  width: 75%;
+  width: 50%;
 
 }
 
@@ -155,8 +155,37 @@ border-top-right-radius: 30px;
   width: 350px;
 }
 
+#boton_g{
+  background-color: #7C75DB;
+  color: #F2F2F2;
+  border-bottom-right-radius:30px ;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 
+}
 
+#boton_c{
+  background-color: #7C75DB;
+  color: #FFFFFF;
+  border-bottom-right-radius:30px ;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#btn{
+  background-color: #7C75DB;
+  color: #FFFFFF;
+  border-bottom-right-radius:30px ;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+#footer_pagi{
+  color: #FFFFFF;
+}
 
 
 @media (max-width:1200px) {

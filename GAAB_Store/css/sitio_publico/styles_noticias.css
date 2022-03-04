@@ -133,6 +133,9 @@ padding-top: 120px;
   height: 100%;
 }
 
+#footer_pagi{
+  color: #FFFFFF;
+}
 
 @media (max-width:1200px) {
   body{

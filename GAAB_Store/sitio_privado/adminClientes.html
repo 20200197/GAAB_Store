@@ -23,7 +23,7 @@
                 <div class="col s12 m1 " id="nave">
                     <div class="nav-wrapper">
                         <!--Insertamos logo de GAAB Store-->
-                        <a href="#" class="brand-logo"><img src="../img/logo/logo_gaab_white_png_105.png"></a>
+                        <a href="../sitio_privado/estadisticas.html" class="brand-logo"><img src="../img/logo/logo_gaab_white_png_105.png"></a>
                         <!--Insertamos navegador lateral-->
                         <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><img
                                 src="../img/icono/menu_25px.png"></a>
@@ -52,9 +52,9 @@
                 <!--Insertamos un navegador de contenido con los menus visibles para publico-->
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab" id="tabla1"><a href="#test1">Inicio</a></li>
+                        <li class="tab" id="tabla1"><a href="../sitio_privado/estadisticas.html">Inicio</a></li>
                         <li class="tab" id="tabla2"><a href="#test2">Administrar empleados</a></li>
-                        <li class="tab" id="tabla3"><a href="#test3">Administrar clientes</a></li>
+                        <li class="tab" id="tabla3"><a href="../sitio_privado/adminClientes.html">Administrar clientes</a></li>
                         <li class="tab" id="tabla4"><a href="#test4">Administrar categoria</a></li>
                         <li class="tab" id="tabla5"><a href="#test5">Administrar tipo de auto</a></li>
                         <li class="tab" id="tabla6"><a href="#test6">Tipo de usuario</a></li>
@@ -77,19 +77,25 @@
             </li>
 
             <li><a href="#!" class="waves-effect waves-red btn-danger">Administrar empleados</a></li>
-            <li><a href="" class="waves-effect waves-red btn-danger">Administrar clientes</a></li>
+            <li><a href="../sitio_privado/adminClientes.html" class="waves-effect waves-red btn-danger">Administrar clientes</a></li>
             <li><a href="" class="waves-effect waves-red btn-danger">Adminitrar categoria</a></li>
             <li><a href="" class="waves-effect waves-red btn-danger">Administrar tipo de auto</a></li>
             <li><a href="" class="waves-effect waves-red btn-danger">Tipo de usuario</a></li>
             <li>
                 <div class="divider"></div>
-                <li><a href="#!" class="waves-effect waves-red btn-danger">Log in</a></li>
+            <li><a href="#!" class="waves-effect waves-red btn-danger">Log in</a></li>
             </li>
 
         </ul>
 
 
         </div>
+
+        <!--Opciones de menú desplegable-->
+        <ul id='dropdown' class='dropdown-content'>
+            <li><a href="#!">Editar perfil</a></li>
+            <li><a href="#!">Cerrar Sesión</a></li>
+        </ul>
     </header>
 
 
@@ -264,7 +270,7 @@
                 <div class="modal-content">
                     <div class="row">
                         <div class="col s12 m12">
-                            <h5 id="titulo">Editar empleado</h5>
+                            <h5 id="titulo">Editar cliente</h5>
                         </div>
 
                     </div>
@@ -279,14 +285,14 @@
                 <div class="modal-content">
                     <div class="row" id="contorno">
                         <div class="col s12 m12">
-                            <h5 id="titulo">Editar empleado</h5>
+                            <h5 id="titulo">Editar cliente</h5>
 
 
                             <div class="col s12 m4" id="imagen">
                                 <img src="../img/imagenes/imagen.jpg">
                                 <div class="row">
                                     <div class="col s12 m12">
-                                        <a class="btn ">Subir imagen</a>
+                                        <a class="btn" id="btn">Subir imagen</a>
                                     </div>
                                 </div>
                             </div>
@@ -318,9 +324,14 @@
                             <!--Columna siguiente-->
                             <div class="col s12 m4">
                                 <h6>Estado:</h6>
-                                <div class="input-field col s12 m12">
-                                    <input placeholder="Activo">
-                                </div>
+                                <div class="input-field col s12">
+                                    <select>
+                                      <option value="" disabled selected>Elige estado</option>
+                                      <option value="1">Activo</option>
+                                      <option value="2">Inactivo</option>
+                                     
+                                    </select>
+                                  </div>
                                 <div class="row">
                                     <div class="col s12 m12">
                                         <h6>Correo:</h6>
@@ -345,15 +356,15 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Guardar</a>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_g">Guardar</a>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_c">Cancelar</a>
                 </div>
             </div>
 
     </main>
 
     <!--Insertamos derechos de autor-->
-    <div class="footer-copyright" id="footer_final">
+    <div class="footer-copyright" id="footer_pagi ">
         <div class="container">
             © 2022 Copyright
         </div>
