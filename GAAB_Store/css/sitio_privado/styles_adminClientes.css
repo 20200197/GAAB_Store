@@ -125,7 +125,6 @@ border-top-right-radius: 30px;
 
 #modal2{
   width: 75%;
-
 }
 
 #imagen{
@@ -154,10 +153,6 @@ border-top-right-radius: 30px;
 #tabla6{
   width: 350px;
 }
-
-
-
-
 
 @media (max-width:1200px) {
   body{

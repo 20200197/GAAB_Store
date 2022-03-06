@@ -48,21 +48,26 @@
                             <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
 
 
-                            <li><a class="waves-effect waves-red btn-danger" id="boton3"><img
-                                        src="../img/icono/user_35px.png"></a></li>
+                                <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
+
+
+                                <li><a class="waves-effect waves-red btn-danger dropdown-trigger"
+                                        data-target="dropdown"><img src="../img/icono/user_35px.png"></a></li>
+
+                            </ul>
+                        </div>
                     </div>
-                    </ul>
                 </div>
             </div>
             <div class=" hide-on-med-and-down" id="menus">
                 <!--Insertamos un navegador de contenido con los menus visibles para publico-->
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab" id="tabla"><a href="#test1">Inicio</a></li>
+                        <li class="tab" id="tabla"><a href="../sitio_publico/index.html">Inicio</a></li>
                         <li class="tab" id="tabla"><a href="#test2">Productos</a></li>
-                        <li class="tab" id="tabla"><a href="#test3">Noticias</a></li>
-                        <li class="tab" id="tabla"><a href="#test4">Soporte</a></li>
-                        <li class="tab" id="tabla"><a href="#test5">Reseñas</a></li>
+                        <li class="tab" id="tabla"><a href="../sitio_publico/noticias.html">Noticias</a></li>
+                        <li class="tab" id="tabla"><a href="../sitio_publico/soporte.html">Soporte</a></li>
+                        <li class="tab" id="tabla"><a href="../sitio_publico/reseña.html">Reseñas</a></li>
                         <li class="tab" id="tabla"><a href="#test6">¿Quiénes somos?</a></li>
                     </ul>
                 </div>
@@ -136,6 +141,11 @@
 
 
         </div>
+        <!--Opciones de menú desplegable-->
+        <ul id='dropdown' class='dropdown-content'>
+            <li><a href="#!">Editar perfil</a></li>
+            <li><a href="#!">Cerrar Sesión</a></li>
+        </ul>
     </header>
 
 
@@ -163,7 +173,7 @@
                 </li>
             </ul>
         </div>
-      <img src="../img/slider/ofertas_ofertas.png" class="responsive-img">
+        <img src="../img/slider/ofertas_ofertas.png" class="responsive-img">
     </main>
     <!--Agregamos el footer-->
     <footer class="page-footer" id="footer_final">
@@ -212,7 +222,7 @@
         </div>
 
         <!--Insertamos derechos de autor-->
-        <div class="footer-copyright">
+        <div class="footer-copyright" id="footer_pagi">
             <div class="container">
                 © 2022 Copyright
             </div>

@@ -143,12 +143,6 @@ flex-direction:column;
   width: 350px;
 }
 
-
-
-
-
-
-
 @media (max-width:1200px) {
   body{
     display: flex;
