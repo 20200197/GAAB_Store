@@ -13,37 +13,40 @@ body {
   padding-left: 175px;
 }
 
-.responsive-img{
-  max-width: 100%;
-  height: auto;
+.container{
+  margin-top: 80px;
 }
 
-#row-btn{
-  margin-top: 10px;
+#contenido{
+  padding-left: 5%;
+}
+
+#separador{
+  padding: 7px;
+}
+
+#boton_ingresar{
+  width: 300px;
   align-self: center;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#pedir-btn{
   background-color: #7c75db;
+  border-radius: 20px;
 }
 
-#card-pedir{
+#boton_registrar{
+  width: 300px;
+  align-self: center;
+  background-color: #7c75db;
+  border-radius: 20px;
+}
+
+.card-content{
   display: flex;
   flex-direction: column;
-}
-
-.eliminar{
-  color: #aaaaaa;
-  font-style: italic;
-}
-
-.container{
-  margin-top: 60px;
+  text-align: center;
 }
 
 #boton1 {
+
   background-color:#FFFFFF ;
   color: black;
   border-bottom-right-radius:30px ;
