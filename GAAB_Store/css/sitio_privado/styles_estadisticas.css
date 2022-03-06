@@ -143,20 +143,6 @@ flex-direction:column;
   width: 350px;
 }
 
-#titulo{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content:center;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-#footer_pagi{
-  color: #FFFFFF;
-}
-
-
-
 @media (max-width:1200px) {
   body{
     display: flex;

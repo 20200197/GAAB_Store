@@ -5,9 +5,9 @@
     <!--Importar fuentes de Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_inicio.min.css"
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_producto.min.css"
         media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_inicio.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_producto.css" media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +31,9 @@
                             </div>
                         </div>
                         <div class="col  m1"></div>
+ 
                         <div class="col s12 m4">
+ 
                             <div class="col s1 m1">
                                 <img src="../img/icono/search_25px.png">
                             </div>
@@ -40,13 +42,17 @@
                                     class="validate prefix">
                             </div>
                         </div>
+ 
                         <div class="col s4 m4">
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
                                             src="../img/icono/shopping_cart_25px.png"></a></li>
+ 
                                 <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
+ 
                                 <li><a class="waves-effect waves-red btn-danger dropdown-trigger"
                                         data-target="dropdown"><img src="../img/icono/user_35px.png"></a></li>
+ 
                             </ul>
                         </div>
                     </div>
@@ -56,11 +62,11 @@
                 <!--Insertamos un navegador de contenido con los menus visibles para publico-->
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab" id="tabla"><a href="../sitio_publico/index.html">Inicio</a></li>
+                        <li class="tab" id="tabla"><a href="#test1">Inicio</a></li>
                         <li class="tab" id="tabla"><a href="#test2">Productos</a></li>
-                        <li class="tab" id="tabla"><a href="../sitio_publico/noticias.html">Noticias</a></li>
-                        <li class="tab" id="tabla"><a href="../sitio_publico/soporte.html">Soporte</a></li>
-                        <li class="tab" id="tabla"><a href="../sitio_publico/reseña.html">Reseñas</a></li>
+                        <li class="tab" id="tabla"><a href="#test3">Noticias</a></li>
+                        <li class="tab" id="tabla"><a href="#test4">Soporte</a></li>
+                        <li class="tab" id="tabla"><a href="#test5">Reseñas</a></li>
                         <li class="tab" id="tabla"><a href="#test6">¿Quiénes somos?</a></li>
                     </ul>
                 </div>
@@ -133,18 +139,8 @@
             <li><a href="" class="waves-effect waves-red btn-danger">Log in</a></li>
         </ul>
 
-        <!--Opciones de menú desplegable-->
-        <ul id='dropdown' class='dropdown-content'>
-            <li><a href="#!">Editar perfil</a></li>
-            <li><a href="#!">Cerrar Sesión</a></li>
-        </ul>
-        </div>
 
-         <!--Opciones de menú desplegable-->
-         <ul id='dropdown' class='dropdown-content'>
-            <li><a href="#!">Editar perfil</a></li>
-            <li><a href="#!">Cerrar Sesión</a></li>
-        </ul>
+        </div>
     </header>
 
 
@@ -155,27 +151,43 @@
                     src="../img/icono/menu_25pxbl.png"></a>
         </div>
 
-        <!--Colocamos imagen de inicio con texto-->
-
-
-        <div class="row" id="fi_espacio">
+        <!--Colocamos todo el detalle del producto-->
+        <div class="row">
             <div class="col s12 m12">
-                <div class="col s12 m5">
-                    <div class="row" id="colm_texto">
-                        <h1>CON GAAB STORE</h1>
-                        <h2>¡DALE ESTILO A TU AUTO!</h2>
-                    </div>
-                    <div class="row" id="espacio_sencillo">
-                        <a class="waves-effect waves-red btn-danger btn-large" id="boton_inicio">Iniciar compra<img
-                                src="../img/icono/shopping_cart_25px.png"></a>
+                <div>
+                    <div class="col" id="contenido">
+                        <div class="col s12 m4" id="imagen">
+                            <img class="responsive-img" src="../img/imagenes/producto_individual.jpg">
+                        </div>
+                        <div class="col s12 m4">
+                            <div class="section">
+                                <h2>Luces LED</h2>
+                            </div>
+                            <div class="divider"></div>
+                            <div class="section">
+                                <h5>
+                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem asperiores imped
+                                    it debitis temporibus similique ut alias atque beatae dolorum hic, harum autem nam, architecto mollitia voluptates eius odit deserunt. Beatae? Lorem ipsum
+                                    dolor sit amet consectetur adipisicing elit. Id debitis quam assumendauo cupiditate modi, cumque dolorem, aspernatur nihil mollitia laboriosam.
+                                </h5>
+                            </div>
+                        </div>
+                        <div>
+                        <div class="col s12 m4" id="precio">
+                            <div id="precio-1">
+                                <p>Precio: $0.00</p>
+                                <p>Envío adicional $0.00</p>
+                                <div class="divider"></div>
+                                <a class="waves-effect waves-light btn" id="pedir-btn">Añadir</a>
+                            </div>
+                        </div>
+                     </div>
                     </div>
                 </div>
-                <div class="col s12 m7 " id="imagen_inicio">
-                    <img src="../img/imagenes/inicio.png" id="imagen_inicio">
-                </div>
+                
             </div>
+            
         </div>
-
     </main>
     <!--Agregamos el footer-->
     <footer class="page-footer" id="footer_final">
@@ -224,15 +236,15 @@
         </div>
 
         <!--Insertamos derechos de autor-->
-        <div class="footer-copyright" id="footer_pagi">
+        <div class="footer-copyright">
             <div class="container">
                 © 2022 Copyright
             </div>
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../js/sitio_publico/gaab_store_inicio.min.js"></script>
-    <script type="text/javascript" src="../js/sitio_publico/index.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/gaab_store_producto.min.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/producto.js"></script>
 
 </body>
 

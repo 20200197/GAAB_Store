@@ -5,9 +5,9 @@
     <!--Importar fuentes de Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_inicio.min.css"
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_login.min.css"
         media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_inicio.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_login.css" media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -31,7 +31,9 @@
                             </div>
                         </div>
                         <div class="col  m1"></div>
+ 
                         <div class="col s12 m4">
+ 
                             <div class="col s1 m1">
                                 <img src="../img/icono/search_25px.png">
                             </div>
@@ -40,13 +42,17 @@
                                     class="validate prefix">
                             </div>
                         </div>
+ 
                         <div class="col s4 m4">
                             <ul id="nav-mobile" class="right hide-on-med-and-down">
                                 <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
                                             src="../img/icono/shopping_cart_25px.png"></a></li>
+ 
                                 <li><a class="waves-effect waves-red btn-danger " id="boton2">LOG IN</a></li>
+ 
                                 <li><a class="waves-effect waves-red btn-danger dropdown-trigger"
                                         data-target="dropdown"><img src="../img/icono/user_35px.png"></a></li>
+ 
                             </ul>
                         </div>
                     </div>
@@ -56,11 +62,11 @@
                 <!--Insertamos un navegador de contenido con los menus visibles para publico-->
                 <div class="nav-content">
                     <ul class="tabs tabs-transparent">
-                        <li class="tab" id="tabla"><a href="../sitio_publico/index.html">Inicio</a></li>
+                        <li class="tab" id="tabla"><a href="#test1">Inicio</a></li>
                         <li class="tab" id="tabla"><a href="#test2">Productos</a></li>
-                        <li class="tab" id="tabla"><a href="../sitio_publico/noticias.html">Noticias</a></li>
-                        <li class="tab" id="tabla"><a href="../sitio_publico/soporte.html">Soporte</a></li>
-                        <li class="tab" id="tabla"><a href="../sitio_publico/reseña.html">Reseñas</a></li>
+                        <li class="tab" id="tabla"><a href="#test3">Noticias</a></li>
+                        <li class="tab" id="tabla"><a href="#test4">Soporte</a></li>
+                        <li class="tab" id="tabla"><a href="#test5">Reseñas</a></li>
                         <li class="tab" id="tabla"><a href="#test6">¿Quiénes somos?</a></li>
                     </ul>
                 </div>
@@ -133,18 +139,8 @@
             <li><a href="" class="waves-effect waves-red btn-danger">Log in</a></li>
         </ul>
 
-        <!--Opciones de menú desplegable-->
-        <ul id='dropdown' class='dropdown-content'>
-            <li><a href="#!">Editar perfil</a></li>
-            <li><a href="#!">Cerrar Sesión</a></li>
-        </ul>
-        </div>
 
-         <!--Opciones de menú desplegable-->
-         <ul id='dropdown' class='dropdown-content'>
-            <li><a href="#!">Editar perfil</a></li>
-            <li><a href="#!">Cerrar Sesión</a></li>
-        </ul>
+        </div>
     </header>
 
 
@@ -156,26 +152,78 @@
         </div>
 
         <!--Colocamos imagen de inicio con texto-->
-
-
-        <div class="row" id="fi_espacio">
-            <div class="col s12 m12">
+        <div class="container">
+            <div class="row" id="contenido">
                 <div class="col s12 m5">
-                    <div class="row" id="colm_texto">
-                        <h1>CON GAAB STORE</h1>
-                        <h2>¡DALE ESTILO A TU AUTO!</h2>
+                  <div class="card medium">
+                    <div class="card-content">
+                        <div class="card-title">¡Inicia sesión!</div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">account_circle</i>
+                              <input id="first_name" type="text" class="validate">
+                              <label for="first_name">Usuario</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">vpn_key</i>
+                              <input id="password" type="password" class="validate">
+                              <label for="password">Contraseña</label>
+                            </div>
+                        </div>
+                        <a class="waves-effect waves-light btn" id="boton_ingresar">Ingresar</a>
+                        <br>
+                        <a href="#">Olvidó su contraseña?</a>
                     </div>
-                    <div class="row" id="espacio_sencillo">
-                        <a class="waves-effect waves-red btn-danger btn-large" id="boton_inicio">Iniciar compra<img
-                                src="../img/icono/shopping_cart_25px.png"></a>
+                  </div>
+                </div>
+                <div class="col s12 m7">
+                    <div class="card">
+                      <div class="card-content">
+                        <div class="card-title">¡Bienvenido!</div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                              <input id="first_name1" type="text" class="validate">
+                              <label for="first_name1">Nombre</label>
+                            </div>
+                            <div class="input-field col s6">
+                              <input id="last_name" type="text" class="validate">
+                              <label for="last_name">Last Name</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s6">
+                                <input id="telefono" type="text" class="validate">
+                                <label for="telefono">Teléfono</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="dui" type="text" class="validate">
+                                <label for="dui">DUI</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s12">
+                                <input id="correo" type="email" class="validate">
+                                <label for="correo">Correo eléctronico</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input id="password1" type="password" class="validate">
+                              <label for="password1">Contraseña</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password2" type="password" class="validate">
+                                <label for="password2">Confirmar contraseña</label>
+                              </div>
+                        </div>
+                        <a class="waves-effect waves-light btn" id="boton_registrar">Registrarse</a>
+                      </div>
                     </div>
-                </div>
-                <div class="col s12 m7 " id="imagen_inicio">
-                    <img src="../img/imagenes/inicio.png" id="imagen_inicio">
-                </div>
+                  </div>
             </div>
         </div>
-
     </main>
     <!--Agregamos el footer-->
     <footer class="page-footer" id="footer_final">
@@ -224,15 +272,15 @@
         </div>
 
         <!--Insertamos derechos de autor-->
-        <div class="footer-copyright" id="footer_pagi">
+        <div class="footer-copyright">
             <div class="container">
                 © 2022 Copyright
             </div>
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../js/sitio_publico/gaab_store_inicio.min.js"></script>
-    <script type="text/javascript" src="../js/sitio_publico/index.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/gaab_store_login.min.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/login.js"></script>
 
 </body>
 

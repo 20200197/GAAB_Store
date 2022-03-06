@@ -13,6 +13,31 @@ body {
   padding-left: 175px;
 }
 
+.container{
+  margin-top: 80px;
+}
+
+
+#boton_ingresar{
+  width: 300px;
+  align-self: center;
+  background-color: #7c75db;
+  border-radius: 20px;
+}
+
+#boton_registrar{
+  width: 300px;
+  align-self: center;
+  background-color: #7c75db;
+  border-radius: 20px;
+}
+
+.card-content{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
 #boton1 {
 
   background-color:#FFFFFF ;
@@ -51,7 +76,7 @@ border:grey 1px solid;
 
 #footer_final{
   background-color: #B03A2E;
-
+  display: inline-block;
 
 }
 
@@ -91,68 +116,50 @@ flex-direction:column;
 
 #navegador_lateral {
   padding-left: 15px ;
-  z-index: 100;
+  z-index: 2;
   position: absolute;
 }
 
-#imagen_inicio{
-  z-index:1 ;
+
+
+#colm_lateral{
+padding-top: 120px;
+ 
 }
 
-#titulo{
+#espacio_sencillo{
+ padding-left: 100PX;
+}
+
+#colm_texto{
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
- 
-#color{
+
+#imagen_inicio{
+
+  max-width: 100%;
+  height: auto;
+  z-index:1 ;
+  height: 100%;
+  
+}
+
+#boton_inicio{
+  background-color:#FFFFFF ;
   color: black;
-}
-
-#contorno{
-  border: #7C75DB 1px solid;
-border-bottom-right-radius: 30px;
-border-bottom-left-radius: 30px;
-border-top-left-radius: 30px;
-border-top-right-radius: 30px;
-}
-
-#modal1{
-  width: 100%;
-}
-
-#modal2{
-  width: 75%;
-}
-
-#imagen{
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  border-bottom-right-radius:30px ;
+  border-bottom-left-radius: 30px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border:black 1px solid;
 }
 
 
-#tabla1{
-  width: 100px;
-}
-#tabla2{
-  width: 350px;
-}
-#tabla3{
-  width: 350px;
-}
-#tabla4{
-  width: 350px;
-}
-#tabla5{
-  width: 350px;
-}
-#tabla6{
-  width: 350px;
-}
 
 @media (max-width:1200px) {
   body{

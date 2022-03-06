@@ -147,11 +147,6 @@ padding-top: 120px;
   border:black 1px solid;
 }
 
-#footer_pagi{
-  color: #FFFFFF;
-}
-
-
 @media (max-width:1200px) {
   body{
     display: flex;
