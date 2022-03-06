@@ -5,9 +5,9 @@
     <!--Importar fuentes de Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_carrito.min.css"
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/gaab_store_contraseña_recu.min.css"
         media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_carrito.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../css/sitio_publico/styles_contraseña_recu.css" media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -141,12 +141,6 @@
 
 
         </div>
-
-         <!--Opciones de menú desplegable-->
-         <ul id='dropdown' class='dropdown-content'>
-            <li><a href="#!">Editar perfil</a></li>
-            <li><a href="#!">Cerrar Sesión</a></li>
-        </ul>
     </header>
 
 
@@ -159,81 +153,46 @@
 
         <!--Colocamos imagen de inicio con texto-->
         <div class="container">
-            <div class="row">
-                <div class="col s12 m10">
-                    <div class="card">
-                        <div class="card-content">
-                            <div class="card-title">Carrito de compra</div>
-                            <div class="divider"></div>
-                            <div class="row">
-                                <div class="col s12 m2">
-                                    <img class="responsive-img" src="../img/imagenes/forro.jpg">
-                                </div>
-                                <div class="col s12 m10">
-                                    <div class="row">
-                                        <div class="col s12 m10">
-                                            <h5>forro para auto</h5>
-                                        </div>
-                                        <div class="col s4 m1">
-                                            <a href="#" class="eliminar">Eliminar</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m6">
-                                            <div class="col s12 m3">
-                                                <p>Precio: $0.00</p>
-                                            </div>
-                                            <div class="col s12 m3">
-                                                <p>cantidad: 1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 m2">
-                                    <img class="responsive-img" src="../img/imagenes/forro.jpg">
-                                </div>
-                                <div class="col s12 m10">
-                                    <div class="row">
-                                        <div class="col s12 m10">
-                                            <h5>forro para auto</h5>
-                                        </div>
-                                        <div class="col s4 m1">
-                                            <a href="#" class="eliminar">Eliminar</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m6">
-                                            <div class="col s12 m3">
-                                                <p>Precio: $0.00</p>
-                                            </div>
-                                            <div class="col s12 m3">
-                                                <p>cantidad: 1</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <div class="row" id="contenido">
+                <div class="col s12 m5">
+                  <div class="card medium">
+                    <div class="card-content">
+                        <div class="card-title">¡A su correo electronico hemos enviado un codigo de confirmación!</div>
+                        <div class="row">
+                            <img class="responsive-img" src="../img/imagenes/Check Circle_80px.png">
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                              <input id="code" type="text" class="validate">
+                              <label for="code">Código de 6 digitos</label>
                             </div>
                         </div>
+                        <a class="waves-effect waves-light btn" id="boton_ingresar">Reestablecer</a>
                     </div>
+                  </div>
                 </div>
-                <div class="col s12 m2">
-                    <div class="card">
-                        <div class="card-content" id="card-pedir">
-                            <div class="row">
-                                <p>Total: $0.00</p>
-                            </div>
-                            <div class="row">
-                                <p>Envío adicional: $0.00</p>
-                            </div>
-                            <div class="divider"></div>
-                            <div class="row" id="row-btn">
-                                <a class="waves-effect waves-light btn" id="pedir-btn">Hacer pedido</a>
-                            </div>
+                <div class="col s12 m6">
+                    <div class="card medium">
+                      <div class="card-content">
+                        <div class="card-title">Ingrese una nueva contraseña</div>
+                        <div class="row" id="separador"></div>
+                        <div class="row">
+                            <img class="responsive-img" src="../img/imagenes/key_80px.png">
                         </div>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input id="password1" type="password" class="validate">
+                              <label for="password1">Contraseña</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input id="password2" type="password" class="validate">
+                                <label for="password2">Confirmar contraseña</label>
+                              </div>
+                        </div>
+                        <a class="waves-effect waves-light btn" id="boton_registrar">Guardar</a>
+                      </div>
                     </div>
-                </div>
+                  </div>
             </div>
         </div>
     </main>
@@ -291,8 +250,8 @@
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../js/sitio_publico/gaab_store_carrito.min.js"></script>
-    <script type="text/javascript" src="../js/sitio_publico/carrito.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/gaab_store_contraseña_recu.min.js"></script>
+    <script type="text/javascript" src="../js/sitio_publico/contraseña_recu.js"></script>
 
 </body>
 
