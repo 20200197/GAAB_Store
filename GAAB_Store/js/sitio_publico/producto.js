@@ -12,3 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var instances = M.FormSelect.init(elems);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.dropdown-trigger');
+  let optiona={
+    alignment:'left',
+    
+  };
+  var instances = M.Dropdown.init(elems);
+});
