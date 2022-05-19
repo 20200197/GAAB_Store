@@ -1,128 +1,136 @@
 <?php
-require_once('../ayudantes/database.php');
-require_once('../ayudantes/validator.php');
-require_once('../modelos/tipo_auto.php');
+/*
+*	Clase para manejar la tabla usuarios de la base de datos.
+*   Es clase hija de Validator.
+*/
+class Tipo_auto extends Validator
+{
+    // Declaración de atributos (propiedades).
+    private $id = null;
+    private $tipo_auto = null;
+    private $imagen_tipo_auto = null;
 
-// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
-if (isset($_GET['action'])) {
-    // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
-    session_start();
-    // Se instancia la clase correspondiente.
-    $tipo_auto = new Tipo_auto;
-    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'message' => null, 'exception' => null);
-    // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-   // if (isset($_SESSION['id_empleado'])) {
-        // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
-        switch ($_GET['action']) {
-            case 'readAll':
-                if ($result['dataset'] = $tipo_auto->readAll()) {
-                    $result['status'] = 1;
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay datos registrados';
-                }
-                break;
-            case 'search':
-                $_POST = $tipo_auto->validateForm($_POST);
-                if ($_POST['search'] == '') {
-                    $result['exception'] = 'Ingrese un tipo de auto para buscar';
-                } elseif ($result['dataset'] = $tipo_auto->searchRows($_POST['search'])) {
-                    $result['status'] = 1;
-                    $result['message'] = 'tipo de auto encontrado';
-                } elseif (Database::getException()) {
-                    $result['exception'] = Database::getException();
-                } else {
-                    $result['exception'] = 'No hay coincidencias';
-                }
-                break;
-            case 'create':
-                $_POST = $tipo_auto->validateForm($_POST);
-                if (!$tipo_auto->setTipo_auto($_POST['tipo_auto'])) {
-                    $result['exception'] = 'Tipo  de auto incorrecto';
-                } elseif (!is_uploaded_file($_FILES['imagen_tipo_auto']['tmp_name'])) {
-                    $result['exception'] = 'Seleccione una imagen';
-                } elseif (!$tipo_auto->setImagen_tipo_auto($_FILES['imagen_tipo_auto'])) {
-                    $result['exception'] = $tipo_auto->getFileError();
-                } elseif ($tipo_auto->createRow()) {
-                    $result['status'] = 1;
-                    if ($tipo_auto->saveFile($_FILES['imagen_tipo_auto'], $tipo_auto->getRuta(), $tipo_auto->getImagen_tipo_auto())) {
-                        $result['message'] = 'Tipo de auto creado correctamente';
-                    } else {
-                        $result['message'] = 'Tipo de auto creado pero no se guardó la imagen';
-                    }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-                case 'readOne':
-                    if (!$tipo_auto->setId($_POST['id'])) {
-                        $result['exception'] = 'Tipo de auto incorrecta';
-                    } elseif ($result['dataset'] = $tipo_auto->readOne()) {
-                        $result['status'] = 1;
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'Tipo de auto inexistente';
-                    }
-                    break;
-        
-            case 'update':
-                $_POST = $tipo_auto->validateForm($_POST);
-                if (!$tipo_auto->setId($_POST['id_editar'])) {
-                    $result['exception'] = 'Tipo de auto incorrecto';
-                }elseif (!$data = $tipo_auto->readOne()) {
-                    $result['exception'] = 'Tipo de auto inexistente ';
-                } elseif (!$tipo_auto->setTipo_auto($_POST['tipo_auto'])) {
-                    $result['exception'] = 'Tipo de auto incorrecto';
-                }elseif (!is_uploaded_file($_FILES['imagen_tipo_auto']['tmp_name'])) {
-                    if ($tipo_auto->updateRow($data['imagen_tipo_auto'])) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Tipo de auto modificado correctamente';
-                    } else {
-                        $result['exception'] = Database::getException();
-                    }
-                } elseif (!$tipo_auto->setImagen_tipo_auto($_FILES['imagen_tipo_auto'])) {
-                    $result['exception'] = $tipo_auto->getFileError();
-                } elseif ($tipo_auto->updateRow($data['imagen_tipo_auto'])) {
-                    $result['status'] = 1;
-                    if ($tipo_auto->saveFile($_FILES['imagen_tipo_auto'], $tipo_auto->getRuta(), $tipo_auto->getImagen_tipo_auto())) {
-                        $result['message'] = 'Tipo de auto modificado correctamente';
-                    } else {
-                        $result['message'] = 'Tipo de auto modificado pero no se guardó la imagen';
-                    }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            case 'delete':
-                if (!$tipo_auto->setId($_POST['id'])) {
-                    $result['exception'] = 'Tipo de auto incorrecta';
-                } elseif (!$data = $tipo_auto->readOne()) {
-                    $result['exception'] = 'Tipo de auto inexistente';
-                } elseif ($tipo_auto->deleteRow()) {
-                    $result['status'] = 1;
-                    if ($tipo_auto->deleteFile($tipo_auto->getRuta(), $data['imagen_tipo_auto'])) {
-                        $result['message'] = 'Tipo de auto eliminado correctamente';
-                    } else {
-                        $result['message'] = 'tipo de auto eliminado pero no se borró la imagen';
-                    }
-                } else {
-                    $result['exception'] = Database::getException();
-                }
-                break;
-            default:
-                $result['exception'] = 'Acción no disponible dentro de la sesión';
-    
+    private $ruta = '../imagenes/tipo_auto/';
+
+    /*
+    *   Métodos para validar y asignar valores de los atributos.
+    */
+    public function setId($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->id = $value;
+            return true;
+        } else {
+            return false;
         }
-        // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
-        header('content-type: application/json; charset=utf-8');
-        // Se imprime el resultado en formato JSON y se retorna al controlador.
-        print(json_encode($result));
-   // } else {
-    //    print(json_encode('Acceso denegado'));
-   // }
-} else {
-    print(json_encode('Recurso no disponible'));
+    }
+
+    public function setTipo_auto($value)
+    {
+        if ($this->validateAlphabetic($value, 1, 50)) {
+            $this->tipo_auto= $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setImagen_tipo_auto($file)
+    {
+        if ($this->validateImageFile($file, 500, 500)) {
+            $this->imagen_tipo_auto = $this->getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+
+    /*
+    *   Métodos para obtener valores de los atributos.
+    */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getTipo_auto()
+    {
+        return $this->tipo_auto;
+    }
+
+    public function getImagen_tipo_auto()
+    {
+        return $this->imagen_tipo_auto;
+    }
+
+
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
+
+    /*
+    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
+    */
+    public function searchRows($value)
+    {
+        $sql = 'SELECT id_tipo_auto, tipo_auto, imagen_tipo_auto
+                FROM tipo_auto 
+                WHERE  tipo_auto ILIKE ? 
+                ORDER BY tipo_auto';
+        $params = array("%$value%");
+        return Database::getRows($sql, $params);
+    }
+
+    public function createRow()
+    {
+        $sql = 'INSERT INTO tipo_auto(tipo_auto, imagen_tipo_auto)
+                VALUES(?, ?)';
+        $params = array($this->tipo_auto, $this->imagen_tipo_auto);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function readAll()
+    {
+        $sql = 'SELECT id_tipo_auto, tipo_auto, imagen_tipo_auto
+                FROM tipo_auto
+                ORDER BY tipo_auto';
+        $params = null;
+        return Database::getRows($sql, $params);
+    }
+
+    public function readOne()
+    {
+        $sql = 'SELECT id_tipo_auto,tipo_auto,imagen_tipo_auto
+                FROM tipo_auto
+                WHERE id_tipo_auto = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+
+
+
+
+    public function updateRow($current_image)
+    {
+        // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
+        ($this->imagen_tipo_auto) ? $this->deleteFile($this->getRuta(), $current_image) : $this->imagen_tipo_auto = $current_image;
+
+        $sql = 'UPDATE tipo_auto 
+                SET tipo_auto=  ?, imagen_tipo_auto=?
+                WHERE id_tipo_auto=?';
+        $params = array($this->tipo_auto,$this->imagen_tipo_auto,$this->id);
+        return Database::executeRow($sql, $params);
+    }
+    
+
+    public function deleteRow()
+    {
+        $sql = 'DELETE FROM tipo_auto
+                WHERE id_tipo_auto= ?';
+        $params = array($this->id);
+        return Database::executeRow($sql, $params);
+    }
 }
