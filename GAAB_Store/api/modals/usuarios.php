@@ -7,69 +7,115 @@ class Usuarios extends Validator
 {
     // Declaración de atributos (propiedades).
     private $id = null;
-    private $nombres = null;
-    private $apellidos = null;
-    private $correo = null;
-    private $alias = null;
-    private $clave = null;
+    private $nombre_empleado = null;
+    private $apellido_empleado = null;
+    private $correo_empleado = null;
+    private $usuario_empleado = null;
+    private $contrasenia_empleado = null;
+    private $dui_empleado = null;
+    private $imagen_perfil_empleado = null;
+    private $estado_empleado = null;
+    private $id_tipo_empleado = null;
+    private $ruta = '../imagenes/usuarios/';
 
     /*
     *   Métodos para validar y asignar valores de los atributos.
     */
-    public function setId($value)
-    {
-        if ($this->validateNaturalNumber($value)) {
+  
+
+    public function setId($value){
+        if($this->validateNaturalNumber($value)){
             $this->id = $value;
             return true;
-        } else {
+        }else{
             return false;
         }
     }
 
-    public function setNombres($value)
+    public function setNombre_empleado($value)
     {
         if ($this->validateAlphabetic($value, 1, 50)) {
-            $this->nombres = $value;
+            $this->nombre_empleado = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setApellidos($value)
+    public function setApellido_empleado($value)
     {
         if ($this->validateAlphabetic($value, 1, 50)) {
-            $this->apellidos = $value;
+            $this->apellido_empleado = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setCorreo($value)
+    public function setCorreo_empleado($value)
     {
         if ($this->validateEmail($value)) {
-            $this->correo = $value;
+            $this->correo_empleado = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setAlias($value)
+    public function setUsuario_empleado($value)
     {
         if ($this->validateAlphanumeric($value, 1, 50)) {
-            $this->alias = $value;
+            $this->usuario_empleado = $value;
             return true;
         } else {
             return false;
         }
     }
 
-    public function setClave($value)
+    public function setContrasenia_empleado($value)
     {
         if ($this->validatePassword($value)) {
-            $this->clave = password_hash($value, PASSWORD_DEFAULT);
+            $this->contrasenia_empleado = password_hash($value, PASSWORD_DEFAULT);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setDui_empleado($value)
+    {
+        if ($this->validateDui($value, 10, 10)) {
+            $this->dui_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setImagen_perfil_empleado($file)
+    {
+        if ($this->validateImageFile($file, 500, 500)) {
+            $this->imagen_perfil_empleado = $this->getFileName();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setEstado_empleado($value)
+    {
+        if ($this->validateBoolean($value)) {
+            $this->estado_empleado = $value;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function setId_tipo_empleado($value)
+    {
+        if ($this->validateNaturalNumber($value)) {
+            $this->id_tipo_empleado = $value;
             return true;
         } else {
             return false;
@@ -84,41 +130,67 @@ class Usuarios extends Validator
         return $this->id;
     }
 
-    public function getNombres()
+    public function getNombre_empleado()
     {
-        return $this->nombres;
+        return $this->nombre_empleado;
     }
 
-    public function getApellidos()
+    public function getApellido_empleado()
     {
-        return $this->apellidos;
+        return $this->apellido_empleado;
     }
 
-    public function getCorreo()
+    public function getCorreo_empleado()
     {
-        return $this->correo;
+        return $this->correo_empleado;
     }
 
-    public function getAlias()
+    public function getUsuario_empleado()
     {
-        return $this->alias;
+        return $this->usuario_empleado;
     }
 
-    public function getClave()
+    public function getContrasenia_empleado()
     {
-        return $this->clave;
+        return $this->contrasenia_empleado;
     }
 
-    /*
-    *   Métodos para gestionar la cuenta del usuario.
-    */
-    public function checkUser($alias)
+    public function getDui_empleado()
     {
-        $sql = 'SELECT id_usuario FROM usuarios WHERE alias_usuario = ?';
-        $params = array($alias);
+        return $this->dui_empleado;
+    }
+
+    public function getImagen_perfil_empleado()
+    {
+        return $this->imagen_perfil_empleado;
+    }
+
+    public function getEstado_empleado()
+    {
+        return $this->estado_empleado;
+    }
+
+    public function getId_estado_empleado()
+    {
+        return $this->estado_empleado;
+    }
+
+    public function getRuta()
+    {
+        return $this->ruta;
+    }
+
+    //Lo que ocupe
+   
+    public function checkUser($usuario)
+    {
+        $sql = 'SELECT id_empleado,correo_empleado,imagen_perfil_empleado FROM empleado WHERE usuario_empleado = ?';
+        $params = array($usuario);
         if ($data = Database::getRow($sql, $params)) {
-            $this->id = $data['id_usuario'];
-            $this->alias = $alias;
+            $this->id = $data['id_empleado'];
+            $this->usuario_empleado = $usuario;
+            $this->correo_empleado = $data['correo_empleado'];
+            $this->imagen_perfil_empleado = $data['imagen_perfil_empleado'];
             return true;
         } else {
             return false;
@@ -127,95 +199,87 @@ class Usuarios extends Validator
 
     public function checkPassword($password)
     {
-        $sql = 'SELECT clave_usuario FROM usuarios WHERE id_usuario = ?';
+        $sql = 'SELECT contrasenia_empleado FROM empleado WHERE id_empleado = ?';
         $params = array($this->id);
         $data = Database::getRow($sql, $params);
         // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
-        if (password_verify($password, $data['clave_usuario'])) {
+        if (password_verify($password, $data['contrasenia_empleado'])) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function changePassword()
-    {
-        $sql = 'UPDATE usuarios SET clave_usuario = ? WHERE id_usuario = ?';
-        $params = array($this->clave, $_SESSION['id_usuario']);
-        return Database::executeRow($sql, $params);
-    }
-
     public function readProfile()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE id_usuario = ?';
-        $params = array($_SESSION['id_usuario']);
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, correo_empleado, usuario_empleado, dui_empleado,imagen_perfil_empleado
+                FROM empleado
+                WHERE id_empleado = ?';
+        $params =  array($_SESSION['id_usuario']);
+      //  $id_empleado_ = $params;
         return Database::getRow($sql, $params);
     }
 
-    public function editProfile()
+    public function editProfile($current_image)
     {
-        $sql = 'UPDATE usuarios
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $_SESSION['id_usuario']);
+         // Se verifica si existe una nueva imagen para borrar la actual, de lo contrario se mantiene la actual.
+         ($this->imagen_perfil_empleado) ? $this->deleteFile($this->getRuta(), $current_image) : $this->imagen_perfil_empleado = $current_image;
+
+        $sql = 'UPDATE empleado
+                SET nombre_empleado = ?, apellido_empleado = ?, correo_empleado = ?,usuario_empleado =?,imagen_perfil_empleado=?
+                WHERE id_empleado = ?';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->correo_empleado,$this->usuario_empleado,$this->imagen_perfil_empleado,$_SESSION['id_usuario']);
         return Database::executeRow($sql, $params);
     }
 
     /*
     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, delete).
     */
-    public function searchRows($value)
-    {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE apellidos_usuario ILIKE ? OR nombres_usuario ILIKE ?
-                ORDER BY apellidos_usuario';
-        $params = array("%$value%", "%$value%");
-        return Database::getRows($sql, $params);
-    }
+   
 
-    public function createRow()
+    public function createUsuario()
     {
-        $sql = 'INSERT INTO usuarios(nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario, clave_usuario)
-                VALUES(?, ?, ?, ?, ?)';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->alias, $this->clave);
+        $sql = 'INSERT INTO empleado(nombre_empleado, apellido_empleado, correo_empleado, usuario_empleado, contrasenia_empleado, dui_empleado, imagen_perfil_empleado, estado_empleado, id_tipo_empleado)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre_empleado, $this->apellido_empleado, $this->correo_empleado, $this->usuario_empleado, $this->contrasenia_empleado, $this->dui_empleado, $this->imagen_perfil_empleado,$this->estado_empleado, $this->id_tipo_empleado);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                ORDER BY apellidos_usuario';
+        $sql = 'SELECT id_empleado, nombre_empleado, apellido_empleado, correo_empleado, usuario_empleado, dui_empleado
+                FROM empleado
+                ORDER BY apellido_empleado';
         $params = null;
         return Database::getRows($sql, $params);
     }
 
-    public function readOne()
+    public function readRegistro()
     {
-        $sql = 'SELECT id_usuario, nombres_usuario, apellidos_usuario, correo_usuario, alias_usuario
-                FROM usuarios
-                WHERE id_usuario = ?';
-        $params = array($this->id);
+        $sql = 'SELECT id_empleado, imagen_perfil_empleado
+                FROM empleado
+                where id_empleado=?';
+        $params =  $id_empleado_;
         return Database::getRow($sql, $params);
     }
 
-    public function updateRow()
+    public function changePassword()
     {
-        $sql = 'UPDATE usuarios 
-                SET nombres_usuario = ?, apellidos_usuario = ?, correo_usuario = ?
-                WHERE id_usuario = ?';
-        $params = array($this->nombres, $this->apellidos, $this->correo, $this->id);
+        $sql = 'UPDATE empleado SET contrasenia_empleado = ? WHERE id_empleado = ?';
+        $params = array($this->contrasenia_empleado, $_SESSION['id_usuario']);
         return Database::executeRow($sql, $params);
     }
 
-    public function deleteRow()
+    public function readOnes()
     {
-        $sql = 'DELETE FROM usuarios
-                WHERE id_usuario = ?';
-        $params = array($this->id);
-        return Database::executeRow($sql, $params);
+        $sql = 'SELECT  id_empleado, nombre_empleado, apellido_empleado, correo_empleado, usuario_empleado, dui_empleado, imagen_perfil_empleado
+                FROM empleado
+                WHERE id_empleado = ?';
+        $params = array($_SESSION['id_usuario']);
+        return Database::getRow($sql, $params);
     }
+
+    
 }
+
+    
