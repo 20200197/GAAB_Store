@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_privado.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <div class="row">
+            <br><br><br>
+            <div class="col s12 m6 l6 offset-l3 offset-m3">
+                <div class="card">
+                    <div class="card-content center-align">
+                        <!--Datos para registrarse-->
+                        <div class="card-title">¡Bienvenido!</div>
+                        <form class="row" method="post" id="register-form">
+                            <input class="hide" type="text" id="estado_ep" name="estado_ep">
+                            <div class="file-field input-field col s6 m6 l6">
+                                <div class="switch">
+                                    <span>Estado:</span>
+                                    <label>
+                                        <input id="estado_empleado" type="checkbox" name="estado_empleado" disabled
+                                            checked>
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <select id="id_tipo_empleado" name="id_tipo_empleado">
+                                </select>
+                                <label for="id_tipo_empleado">Tipo_empleado</label>
+                            </div>
+                            <div class="file-field input-field col s12 m12 l12">
+                                <div class="btn waves-effect tooltipped"
+                                    data-tooltip="Elegir imagen de al menos 500x500 px">
+                                    <i class="material-icons">image</i>
+                                    <input id="archivo" type="file" name="archivo" accept=".jpg, .png">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input type="text" class="file-path validate"
+                                        placeholder="Formatos válidos: jpg y png">
+                                </div>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="nombre_empleado" type="text" name="nombre_empleado" class="validate"
+                                    required>
+                                <label for="nombre_empleado">Nombre</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="apellido_empleado" type="text" name="apellido_empleado" class="validate"
+                                    required>
+                                <label for="apellido_empleado">Apellido</label>
+                            </div>
+                            <div class="input-field col s12 m12 l12">
+                                <input id="dui_empleado" type="text" name="dui_empleado" class="validate" maxlength="10" required>
+                                <label for="dui_empleado">DUI</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="correo_empleado" type="email" name="correo_empleado" class="validate"
+                                    required>
+                                <label for="correo_empleado">Correo eléctronico</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="usuario_empleado" type="text" name="usuario_empleado" class="validate"
+                                    required>
+                                <label for="usuario_empleado">Usuario</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="contrasenia_empleado" type="password" name="contrasenia_empleado"
+                                    class="validate" required>
+                                <label for="contrasenia_empleado">Contraseña</label>
+                            </div>
+                            <div class="input-field col s6 m6 l6">
+                                <input id="confirmar" type="password" name="confirmar" class="validate" required>
+                                <label for="confirmar">Confirmar contraseña</label>
+                            </div>
+                            <!--Botón para registrarse-->
+                            <button class="waves-effect waves-light btn deep-purple accent-2 col s12 m12 l12"
+                                type="submit">Registrarse</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <!--Agregamos el footer-->
+    <footer>
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright" id="footer_final">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js "></script>
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/dashboard/sin_loguear.js"></script>
+    <script src="../../controladores/dashboard/registrarse.js"></script>
+
+</body>
+
+</html>

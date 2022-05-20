@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_privado.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+    </header>
+
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
+        </div>
+        <div class="container ">
+            <div class="row">
+                <h3 id="titulo">Administrar Empleados</h3>
+                <div class="row">
+                    <!-- Formulario de búsqueda -->
+                    <form method="post" id="search-form">
+                        <div class="input-field col s6 m4">
+                            <i class="material-icons prefix">search</i>
+                            <input id="search" type="text" name="search">
+                            <label for="search">Buscador</label>
+                        </div>
+                        <div class="input-field col s6 m4">
+                            <button type="submit" class="btn-floating waves-effect blue tooltipped"
+                                data-tooltip="Buscar">
+                                <i class="material-icons">check</i>
+                            </button>
+                        </div>
+                    </form>
+                    <a class="btn modal-trigger right" onclick="openCreate()" id="boton_agregar"><i class="material-icons">add</i></a>
+                </div>
+            </div>
+            <!--Tabla de empleados-->
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre:</th>
+                        <th>Apellido:</th>
+                        <th>Correo:</th>
+                        <th>Usuario:</th>
+                        <th>Dui:</th>
+                        <th>Tipo:</th>
+                        <th>Estado:</th>
+                        <th>Editar</th>
+                    </tr>
+                </thead>
+                <!--Cuerpo de tabla-->
+                <tbody id="tbody-adminEmple">
+                </tbody>
+            </table>
+            <!-- Modal agregar -->
+            <div id="save-modal" class="modal">
+                <div class="modal-content">
+                    <form class="row" method="post" id="save-form" enctype="multipart/form-data">
+                        <div class="row" id="contorno">
+                            <div class="col s12 m12">
+                                <h5 id="titulo">Añadir empleado</h5>
+                                <input class="hide" type="text" id="estado_ep" name="estado_ep">
+                                <div class="file-field input-field col s6 m6 l6">
+                                    <div class="switch">
+                                        <span>Estado:</span>
+                                        <label>
+                                            <input id="estado_empleado" type="checkbox" name="estado_empleado" disabled
+                                                checked>
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <select id="id_tipo_empleado" name="id_tipo_empleado">
+                                    </select>
+                                    <label for="id_tipo_empleado">Tipo_empleado</label>
+                                </div>
+                                <div class="file-field input-field col s12 m12 l12">
+                                    <div class="btn waves-effect tooltipped"
+                                        data-tooltip="Elegir imagen de al menos 500x500 px">
+                                        <i class="material-icons">image</i>
+                                        <input id="archivo" type="file" name="archivo" accept=".jpg, .png">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input type="text" class="file-path validate"
+                                            placeholder="Formatos válidos: jpg y png">
+                                    </div>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="nombre_empleado" type="text" name="nombre_empleado" class="validate"
+                                        required>
+                                    <label for="nombre_empleado">Nombre</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="apellido_empleado" type="text" name="apellido_empleado" class="validate"
+                                        required>
+                                    <label for="apellido_empleado">Apellido</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12">
+                                    <input id="dui_empleado" type="text" name="dui_empleado" class="validate"
+                                        maxlength="10" required>
+                                    <label for="dui_empleado">DUI</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="correo_empleado" type="email" name="correo_empleado" class="validate"
+                                        required>
+                                    <label for="correo_empleado">Correo eléctronico</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="usuario_empleado" type="text" name="usuario_empleado" class="validate"
+                                        required>
+                                    <label for="usuario_empleado">Usuario</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="contrasenia_empleado" type="password" name="contrasenia_empleado"
+                                        class="validate" required>
+                                    <label for="contrasenia_empleado">Contraseña</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="confirmar" type="password" name="confirmar" class="validate" required>
+                                    <label for="confirmar">Confirmar contraseña</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-flat" id="boton_agregar" type="submit">Guardar</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat"
+                                id="boton_agregar">Cancelar</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--ModalEditar-->
+            <div id="update-modal" class="modal">
+                <div class="modal-content">
+                    <div class="row" id="contorno">
+                        <div class="col s12 m12 l12">
+                            <form class="row" method="post" id="update-form" enctype="multipart/form-data">
+                                <h5 id="titulo">Editar empleado</h5>
+                                <input class="hide" type="number" id="id" name="id">
+                                <input class="hide" type="text" id="estado_ep" name="estado_ep">
+                                <div class="file-field input-field col s6 m6 l6">
+                                    <div class="switch">
+                                        <span>Estado:</span>
+                                        <label>
+                                            <input id="estado_em" type="checkbox" name="estado_em">
+                                            <span class="lever"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <select id="id_tipo_em" name="id_tipo_em">
+                                    </select>
+                                    <label for="id_tipo_em">Tipo_empleado</label>
+                                </div>
+                                <div class="file-field input-field col s12 m12 l12">
+                                    <div class="btn waves-effect tooltipped"
+                                        data-tooltip="Elegir imagen de al menos 500x500 px">
+                                        <i class="material-icons">image</i>
+                                        <input id="img_em" type="file" name="img_em" accept=".jpg, .png">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input type="text" class="file-path validate"
+                                            placeholder="Formatos válidos: jpg y png">
+                                    </div>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="nombre_em" type="text" name="nombre_em" class="validate">
+                                    <label for="nombre_em">Nombre</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="apellido_em" type="text" name="apellido_em" class="validate">
+                                    <label for="apellido_em">Apellido</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12">
+                                    <input id="dui_em" type="text" name="dui_em" class="validate" maxlength="10">
+                                    <label for="dui_em">DUI</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="correo_em" type="email" name="correo_em" class="validate">
+                                    <label for="correo_em">Correo eléctronico</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="usuario_em" type="text" name="usuario_em" class="validate">
+                                    <label for="usuario_em">Usuario</label>
+                                </div>
+                                <label class="col s12 center-align">
+                                    <input type="checkbox" id="condicion" name="condicion">
+                                    <span> <a href="#" class="modal-trigger">Cambiar contraseña</a></span>
+                                </label>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="contrasenia_em" type="password" name="contrasenia_em" class="validate" required disabled>
+                                    <label for="contrasenia_em">Contraseña</label>
+                                </div>
+                                <div class="input-field col s6 m6 l6">
+                                    <input id="confirmar_contra" type="password" name="confirmar_contra"
+                                        class="validate" required disabled>
+                                    <label for="confirmar_contra">Confirmar contraseña</label>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn-flat" id="boton_agregar" type="submit">Guardar</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+                </div>
+                </form>
+            </div>
+    </main>
+
+    <footer>
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright" id="footer_final">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/dashboard/logueado.js"></script>
+    <script src="../../controladores/dashboard/administrar_empleado.js"></script>
+</body>
+
+</html>
