@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos//css/styles_sitio_privado.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+        <!--Colocamos encabezado-->
+        <nav class="nav-extended" id="encabezado">
+            <div class="row" id="otro">
+                <div class="col s12 m1 " id="nave">
+                    <div class="nav-wrapper">
+                        <!--Insertamos logo de GAAB Store-->
+                        <a href="index.html" class="brand-logo"><img
+                                src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
+                        <!--Insertamos navegador lateral-->
+                        <a href="#" data-target="slide-out" class="sidenav-trigger"><img
+                                src="../../recursos/img/icono/menu_25px.png"></a>
+                    </div>
+                </div>
+                <div class="col s2 m4 l3"></div>
+                <div class="col s12 m4 " id="buscador_espacio">
+                </div>
+                <div class="col s4 m4 " id="todo">
+                    <div class="col s2 m6"></div>
+                    <!--Insertamos botones junto a buscador-->
+                    <div class="col s1 m6 l8" id="botones">
+                        <ul id="nav-mobile" class="right hide-on-med-and-down">
+                            <li><a class="waves-effect waves-red btn-danger" id="boton2">LOG IN</a></li>
+                            <li><a class="waves-effect waves-red btn-danger dropdown-trigger" data-target="dropdown"
+                                    id="boton3"><img src="../../recursos/img/icono/user_35px.png"></a></li>
+                    </div>
+                    </ul>
+                </div>
+            </div>
+            <div class=" hide-on-med-and-down" id="menus">
+                <!--Insertamos un navegador de contenido con los menus visibles para publico-->
+                <div class="nav-content">
+                    <ul class="tabs tabs-transparent">
+                        <li class="tab" id="tabla1"><a href="index.html">Inicio</a></li>
+                        <li class="tab" id="tabla2"><a href="adminEmpleados.html">Administrar
+                                empleados</a></li>
+                        <li class="tab" id="tabla3"><a href="adminClientes.html">Administrar
+                                clientes</a></li>
+                        <li class="tab" id="tabla4"><a href="adminCategoria.html">Administrar
+                                categoria</a></li>
+                        <li class="tab" id="tabla5"><a href="tipo_auto.html">Administrar tipo de
+                                auto</a></li>
+                        <li class="tab" id="tabla6"><a href="tipo_usuario.html">Tipo de usuario</a>
+                        </li>
+                        <li class="tab" id="tabla7"><a href="adminProductos.html">Administrar
+                                productos</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--Insertamos las opciones del navegador lateral-->
+        <ul id="slide-out" class="sidenav">
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="../../recursos/img/imagenes/fondo.png">
+                    </div>
+                    <a href="#user"><img class="circle" src="../../recursos/img/imagenes/personaje.png"></a>
+                    <a href="#name"><span class="white-text name">John Doe</span></a>
+                    <a href="#email"><span class="white-text email">ejemplo@gmail.com</span></a>
+                </div>
+            </li>
+            <li><a href="adminEmpleados.html" class="waves-effect waves-red btn-danger">Administrar
+                    empleados</a></li>
+            <li><a href="adminClientes.html" class="waves-effect waves-red btn-danger">Administrar
+                    clientes</a></li>
+            <li><a href="adminCategoria.html" class="waves-effect waves-red btn-danger">Adminitrar
+                    categoria</a></li>
+            <li><a href="tipo_auto.html" class="waves-effect waves-red btn-danger">Administrar tipo de
+                    auto</a></li>
+            <li><a href="tipo_usuario.html" class="waves-effect waves-red btn-danger">Tipo de
+                    usuario</a></li>
+            <li><a href="adminProductos.html" class="waves-effect waves-red btn-danger">Administrar
+                    productos</a></li>
+            <li>
+                <div class="divider"></div>
+            <li><a href="#!" class="waves-effect waves-red btn-danger">Log in</a></li>
+            </li>
+        </ul>
+        </div>
+        <!--Opciones de menú desplegable-->
+        <ul id='dropdown' class='dropdown-content'>
+            <li><a href="perfil.html">Editar perfil</a></li>
+            <li><a href="../sitio_publico/login.html">Cerrar Sesión</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
+        </div>
+        <div class="container ">
+            <div class="row">
+                <h3 id="titulo">Administrar tipo de auto</h3>
+                <!-- Formulario de búsqueda -->
+                <form method="post" id="search-form">
+                    <div class="input-field col s6 m4">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" name="search" required>
+                        <label for="search">Buscador</label>
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <button type="submit" class="btn-floating waves-effect blue tooltipped" data-tooltip="Buscar">
+                            <i class="material-icons">check</i>
+                        </button>
+                    </div>
+                </form>
+                <a onclick="openCreate()" class="btn right" id="boton_agregar">Añadir</a>
+            </div>
+            <!--Tabla de clientes-->
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <!--th funciona para agregar columnas-->
+
+                        <th>Tipo auto</th>
+                        <th>Imagen:</th>
+                        <th>Editar:</th>
+                        <th>Eliminar:</th>
+                    </tr>
+                </thead>
+                <!--Cuerpo de tabla-->
+                <tbody id="tbody-rows">
+
+
+                </tbody>
+            </table>
+        </div>
+        <!--ModalEliminar-->
+        <div id="delete-modal" class="modal">
+            <div class="modal-content">
+
+                <form class="row" method="post" id="delete-form">
+                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                    <input class="hide" type="number" id="id" name="id">
+                    <div class="row" id="contorno">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h5 id="titulo_dos" class="center-align"></h5>
+                                </div>
+                                <div class="col s12 m12 l12">
+                                    <div id="imgadv">
+                                        <img id="imagen_estado">
+                                        <div class="col s12 m12 l12" id="imgadv">
+                                            <h5 id="texto_dos"></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="waves-effect waves-green btn-flat" id="boton_g" type="submit">Guardar</button>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_c">Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--ModalEditar-->
+        <div id="update-modal" class="modal">
+            <div class="modal-content">
+                <div class="row" id="contorno">
+                    <form class="row" method="post" id="update-form" enctype="multipart/form-data">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input  type="number" id="id_editar" name="id_editar">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h5 id="titulo">Modificar tipo de auto</h5>
+                                    <div class="row">
+                                        <div class="file-field input-field col s12 m6">
+                                            <div class="btn waves-effect tooltipped"
+                                                data-tooltip="Elegir imagen de al menos 500x500 px">
+                                                <i class="material-icons">image</i>
+                                                <input id="imagen_tipo_auto" type="file" name="imagen_tipo_auto"
+                                                    accept=".jpg, .png">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input type="text" class="file-path validate"
+                                                    placeholder="Formatos válidos: jpg y png">
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12">
+                                            <h6>Nombre del tipo de auto:</h6>
+                                            <div class="input-field col s12 m12 l12">
+                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate"
+                                                    placeholder="ingrese tipo de auto" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-green btn-flat" id="boton_g" type="submit">Guardar</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_c">Cancelar</a>
+                </div>
+                </form>
+
+            </div>
+        </div>
+        <!--modal para añadir-->
+        <div id="add-modal" class="modal">
+            <div class="modal-content">
+                <div class="row" id="contorno">
+                    <form class="row" method="post" id="add-form" enctype="multipart/form-data">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h5 id="titulo">Añadir nuevo tipo de auto</h5>
+                                    <div class="row">
+                                        <div class="file-field input-field col s12 m6">
+                                            <div class="btn waves-effect tooltipped"
+                                                data-tooltip="Elegir imagen de al menos 500x500 px">
+                                                <i class="material-icons">image</i>
+                                                <input id="imagen_tipo_auto" type="file" name="imagen_tipo_auto"
+                                                    accept=".jpg, .png">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input type="text" class="file-path validate"
+                                                    placeholder="Formatos válidos: jpg y png">
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12">
+                                            <h6>Nombre del tipo de auto:</h6>
+                                            <div class="input-field col s12 m12 l12">
+                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate"
+                                                    placeholder="ingrese tipo de auto" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-green btn-flat" id="boton_g" type="submit">Guardar</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_c">Cancelar</a>
+                </div>
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright" id="footer_final">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js "></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/dashboard/tipo_auto.js"></script>
+
+</body>
+
+</html>
