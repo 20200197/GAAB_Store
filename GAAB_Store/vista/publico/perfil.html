@@ -2,13 +2,17 @@
 <html>
 
 <head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
     <!--Importar fuentes de Google-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Importar iconos-->
     <link href="../../recursos/css/icons.css" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_publico.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_publico.css"
+        media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,31 +27,27 @@
                     <div class="col s12 m3">
                         <div class="nav-wrapper">
                             <!--Insertamos logo de GAAB Store-->
-                            <a href="../../sitio_publico/index.html" class="brand-logo"><img src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
+                            <a href="../../sitio_publico/index.html" class="brand-logo"><img
+                                    src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
                             <!--Insertamos navegador lateral-->
-                            <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><img src="../../recursos/img/icono/menu_25px.png"></a>
+                            <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><img
+                                    src="../../recursos/img/icono/menu_25px.png"></a>
                         </div>
                     </div>
                     <div class="col  m1"></div>
-
-                    <div class="col s12 m4">
-
-                        <div class="col s1 m1">
-                            <img src="../../recursos/img/icono/search_25px.png">
-                        </div>
-                        <div class="col s10 m4">
-                            <input placeholder="textea un producto a buscar..." id="buscador" type="search" class="validate prefix">
-                        </div>
-                    </div>
+                    <div class="col s12 m4"></div>
                     <div class="col s4 m4">
                         <ul id="nav-mobile" class="right hide-on-med-and-down">
-                            <li><a class="waves-effect waves-red btn-danger" id="boton1" href="../sitio_publico/carrito.html">$00.00<img
+                            <li><a class="waves-effect waves-red btn-danger" id="boton1"
+                                    href="../sitio_publico/carrito.html">$00.00<img
                                         src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
 
-                            <li><a class="waves-effect waves-red btn-danger " id="boton2" href="../publico/login.html">LOG IN</a></li>
+                            <li><a class="waves-effect waves-red btn-danger " id="boton2"
+                                    href="../publico/login.html">LOG IN</a></li>
 
                             <li>
-                                <a class="waves-effect waves-red btn-danger dropdown-trigger" data-target="dropdown"><img src="../../recursos/img/icono/user_35px.png"></a>
+                                <a class="waves-effect waves-red btn-danger dropdown-trigger"
+                                    data-target="dropdown"><img src="../../recursos/img/icono/user_35px.png"></a>
                             </li>
                         </ul>
                     </div>
@@ -88,7 +88,7 @@
             <li><a href="soporte.html" class="waves-effect waves-red btn-danger">Soporte</a></li>
             <li><a href="reseña.html" class="waves-effect waves-red btn-danger">Reseñas</a></li>
             <li><a href="quienes_somos.html" class="waves-effect waves-red btn-danger">¿Quiénes
-                                somos?</a></li>
+                    somos?</a></li>
             <div class="divider"></div>
             </li>
             <li><a class="subheader">Filtros</a></li>
@@ -142,71 +142,114 @@
     <main>
         <!--Colocamos navegador lateral-->
         <div class="hide-on-med-and-down" id="navegador_lateral">
-            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img src="../../recursos/img/icono/menu_25pxbl.png"></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
         </div>
         <h3 id="titulo">Editar perfil de Usuario</h3>
         <!--Preguntsa frecuentes-->
         <div class="container" id="contenedor_principal">
-            <div class="row">
-             
-                <div class="col s12 m12 l12">
-                    <div class="col s12 m4 l4 center-align" id="imagen">
-                        <img src="../../recursos/img/imagenes/imagen.jpg">
+            <form class="row" method="post" id="profile-form" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col s12 m12 l12 center-align" id="imagen_imagen">
+                        <!--Campo oculto-->
+                        <input class="hide" type="number" id="id" name="id">
+                        <img id="imagen_profile" height="110" class="circle">
                         <div class="row">
                             <div class="col s12 m12 l12">
-                                <a class="btn " id="boton_subir">Subir imagen</a>
+                                <div class="file-field input-field col s12 m6">
+                                    <div class="btn waves-effect tooltipped" data-tooltip="Elegir imagen de al menos 500x500 px">
+                                        <i class="material-icons">image</i>
+                                        <input id="archivo" type="file" name="archivo" accept=".jpg, .png">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input type="text" class="file-path validate" placeholder="Formatos válidos: jpg y png">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-
+                </div>
+                <div class="row">
                     <div class="col s12 m12 l6">
                         <h6>Nombre:</h6>
-                        <input placeholder="Gerardo Alejandro">
+                        <input placeholder="Gerardo Alejandro" id="nombre" name="nombre">
                         <div class="row">
                             <div class="col s12 m12 l12">
                                 <h6>Apellido:</h6>
-                                <input placeholder="Lopez Lopez">
+                                <input placeholder="Lopez Lopez" id="apellido" name="apellido">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12 m12 l12">
                                 <h6>Teléfono:</h6>
-                                <input placeholder="0000-0000">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m12 l12">
-                                <h6>Usuario:</h6>
-                                <input placeholder="GerLo">
+                                <input placeholder="0000-0000" id="telefono" name="telefono">
                             </div>
                         </div>
                     </div>
                     <!--Columna siguiente-->
                     <div class="col s12 m12 l6">
-                        <h6>Contraseña:</h6>
-                        <input placeholder="##########">
-                        <div class="row">
-                            <div class="col s12 m12 l12">
-                                <h6>Confirmar contraseña:</h6>
-                                <input placeholder="##########">
-                            </div>
-                        </div>
+                        <h6>Usuario:</h6>
+                        <input placeholder="example123" id="usuario" name="usuario">
                         <div class="row">
                             <div class="col s12 m12 l12">
                                 <h6>Correo Electrónico:</h6>
-                                <input placeholder="glgl@gmail.com">
+                                <input placeholder="example@gmail.com" id="correo" name="correo">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col s12 m12 l12">
                                 <h6>DUI:</h6>
-                                <input placeholder="000000000-0">
+                                <input placeholder="000000000-0" id="dui" name="dui">
                             </div>
                         </div>
                     </div>
                 </div>
-            
-            </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <a onclick="openUpdate(document.getElementById('id').value)" class="waves-effect white black-text waves-light btn" id="boton_c">Cambiar contraseña</a>
+                        </div>
+                        <div class="row"></div>
+                        <div class="col s12 m12 l12">
+                            <button class="waves-effect white black-text waves-light btn" id="boton_g" type="submit">Guardar perfil</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!--ModalEditar-->
+        <div id="update-modal" class="modal">
+            <div class="modal-content">
+                <div class="row" id="contorno">
+                    <h5 id="titulo">Cambiar clave</h5>
+                    <!-- Formulario para actualizar contraseña -->
+                    <form class="row" method="post" id="update-form" enctype="multipart/form-data">
+                        <input class="hide" type="number" id="id_cliente_contra" name="id_cliente_contra">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <i class="material-icons prefix">security</i>
+                            <input id="actual" type="password" name="actual" class="validate" required>
+                            <label for="actual">Clave actual</label>
+                        </div>
+                        <div class="col s12 center-align">
+                            <h6>Clave nueva</h6>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="nueva" type="password" name="nueva" class="validate" required>
+                            <label for="nueva">Clave</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="confirmar" type="password" name="confirmar" class="validate" required>
+                            <label for="confirmar">Confirmar clave</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-light  black-text btn-flat" id="boton_g" type="submit">Aceptar</button>
+                    <a href="#!" class="modal-close waves-effect black-text waves-light btn-flat" id="boton_c">Cancelar</a>
+                </div>
+            </form>
         </div>
     </main>
     <!--Agregamos el footer-->
@@ -218,7 +261,7 @@
                 <p class="grey-text text-lighten-4">
                     <a href="#!" class="brand-logo"> <img src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
                     <br>
-                    ¡Dale estilo a tu auto!  
+                    ¡Dale estilo a tu auto!
                 </p>
             </div>
             <div class="col s12 m3 ">
@@ -228,16 +271,20 @@
                 <!--Redes sociales de contacto-->
                 <h5 class="white-text"><b>CONTACTO:</b></h5>
                 <ul>
-                    <a class="grey-text text-lighten-3" href="https://www.facebook.com/GAAB-Store-101949139089956" target="_blank"><img src="../../recursos/img/icono/facebook_25px.png"> &nbsp; Facebook
+                    <a class="grey-text text-lighten-3" href="https://www.facebook.com/GAAB-Store-101949139089956"
+                        target="_blank"><img src="../../recursos/img/icono/facebook_25px.png"> &nbsp; Facebook
                     </a>
                     &nbsp; &nbsp; &nbsp;
-                    <a class="grey-text text-lighten-3" href="#!"><img src="../../recursos/img/icono/twitter_25px.png" target="_blank"> &nbsp; Twitter
+                    <a class="grey-text text-lighten-3" href="#!"><img src="../../recursos/img/icono/twitter_25px.png"
+                            target="_blank"> &nbsp; Twitter
                     </a>
                 </ul>
-                <a class="grey-text text-lighten-3" href="https://www.instagram.com/gaabstoresv/" target="_blank"><img src="../../recursos/img/icono/Instagram_25px.png">&nbsp; Instagram
+                <a class="grey-text text-lighten-3" href="https://www.instagram.com/gaabstoresv/" target="_blank"><img
+                        src="../../recursos/img/icono/Instagram_25px.png">&nbsp; Instagram
                 </a>
                 &nbsp; &nbsp; &nbsp;
-                <a class="grey-text text-lighten-3" href="https://pin.it/24yTnOx" target="_blank"><img src="../../recursos/img/icono/pinterest_25px.png"> &nbsp; Pinterest
+                <a class="grey-text text-lighten-3" href="https://pin.it/24yTnOx" target="_blank"><img
+                        src="../../recursos/img/icono/pinterest_25px.png"> &nbsp; Pinterest
                 </a>
             </div>
             <div class="col s12 m4 ">
@@ -260,8 +307,10 @@
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../../controladores/publico/gaab_store_soporte.min.js"></script>
-    <script type="text/javascript" src="../../controladores/publico/soporte.js"></script>
+    <script src="../../recursos/js/materialize.min.js"></script>
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/publico/perfil.js"></script>
 
 </body>
 
