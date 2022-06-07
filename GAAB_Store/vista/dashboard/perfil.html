@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_privado.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+    </header>
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
+        </div>
+        <h3 id="titulo">Editar perfil de Usuario</h3>
+        <!--Preguntsa frecuentes-->
+        <div class="container" id="contenedor_principal">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <form class="row" method="post" id="profile-form" enctype="multipart/form-data">
+                        <div class="col s12 m4 l4 center-align" id="imagen_imagen">
+                            <!--Campo oculto-->
+                            <input class="hide" type="number" id="id" name="id">
+                            <img id="imagen_profile" height="110" class="circle">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <div class="file-field input-field col s12 m6">
+                                        <div class="btn waves-effect tooltipped"
+                                            data-tooltip="Elegir imagen de al menos 500x500 px">
+                                            <i class="material-icons">image</i>
+                                            <input id="archivo" type="file" name="archivo" accept=".jpg, .png">
+                                        </div>
+                                        <div class="file-path-wrapper">
+                                            <input type="text" class="file-path validate"
+                                                placeholder="Formatos válidos: jpg y png">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m12 l6">
+                            <h6>Nombre:</h6>
+                            <input id="nombre_empleado" type="text" name="nombre_empleado" class="validate"  pattern="[A-Za-z]{1,50}"  required>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h6>Apellido:</h6>
+                                    <input id="apellido_empleado" type="text" name="apellido_empleado" class="validate" pattern="[A-Za-z]{1,50}" 
+                                        required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h6>Usuario:</h6>
+                                    <input id="usuario_empleado" type="text" name="usuario_empleado" class="validate"  pattern="[/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.\-]{]{1,50}">
+                                </div>
+                            </div>
+                        </div>
+                        <!--Columna siguiente-->
+                        <div class="col s12 m12 l6">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h6>Correo Electrónico:</h6>
+                                    <input id="correo_empleado" type="email" name="correo_empleado" class="validate"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h6>DUI:</h6>
+                                    <input id="dui_empleado" type="text" name="dui_empleado" class="validate" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <a onclick="openUpdate(document.getElementById('id').value)"
+                                    class="waves-effect white black-text waves-light btn" id="boton_c">Cambiar
+                                    contraseña</a>
+                            </div>
+                            <div class="row"></div>
+                            <div class="col s12 m12 l12">
+                                <button class="waves-effect white black-text waves-light btn" id="boton_g"
+                                    type="submit">Guardar perfil</button>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <!--ModalEditar-->
+        <div id="update-modal" class="modal">
+            <div class="modal-content">
+                <div class="row" id="contorno">
+                    <h5 id="titulo">Cambiar clave</h5>
+                    <!-- Formulario para actualizar contraseña -->
+                    <form class="row" method="post" id="update-form" enctype="multipart/form-data">
+                        <input class="hide" type="number" id="id_id" name="id_id">
+                        <div class="input-field col s12 m6 offset-m3">
+                            <i class="material-icons prefix">security</i>
+                            <input id="actual" type="password" name="actual" class="validate" required>
+                            <label for="actual">Clave actual</label>
+                        </div>
+                        <div class="col s12 center-align">
+                            <h6>Clave nueva</h6>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="nueva" type="password" name="nueva" class="validate" required>
+                            <label for="nueva">Clave</label>
+                        </div>
+                        <div class="input-field col s12 m6">
+                            <i class="material-icons prefix">security</i>
+                            <input id="confirmar" type="password" name="confirmar" class="validate" required>
+                            <label for="confirmar">Confirmar clave</label>
+                        </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="waves-effect waves-light  black-text btn-flat" id="boton_g" type="submit">Aceptar</button>
+                <a href="#!" class="modal-close waves-effect black-text waves-light btn-flat" id="boton_c">Cancelar</a>
+            </div>
+            </form>
+        </div>
+    </div>
+    <!--ModalCerrarSesion-->
+    <div id="log-modal" class="modal">
+        <div class="modal-content">
+            <div class="row" id="contorno">
+                <form class="row" method="post" id="log-form" enctype="multipart/form-data">
+                    <div class="col s12 m12 l12">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h6 id="titulo_im" class="center-align"></h6>
+                            </div>
+                            <div class="col s12 m12 l12">
+                                <div id="imgadv">
+                                    <img id="imagen_estado" height="70">
+                                    <div class="col s12 m12 l12" id="imgadv">
+                                        <p id="texto_im"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="waves-effect waves-green black-text btn-flat" id="boton_g" type="submit">Aceptar</button>
+                <a href="#!" class="modal-close waves-effect black-text waves-green btn-flat" id="boton_c">Cancelar</a>
+            </div>
+            </form>
+        </div>
+    </div>
+    </main>
+    <!--Agregamos el footer-->
+    <footer>
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright" id="footer_final">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js "></script>
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/dashboard/logueado.js"></script>
+    <script src="../../controladores/dashboard/perfil.js"></script>
+</body>
+
+</html>

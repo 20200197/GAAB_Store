@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_privado.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+    </header>
+
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
+        </div>
+        <div class="container ">
+            <div class="row">
+                <h3 id="titulo">Administrar Categoria</h3>
+                <!-- Formulario de búsqueda -->
+                <form method="post" id="search-form">
+                    <div class="input-field col s6 m4">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" name="search" placeholder="Busque por categoría..." required>
+                        <label for="search">Buscador</label>
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <button type="submit" class="btn-floating waves-effect blue tooltipped" data-tooltip="Buscar">
+                            <i class="material-icons">check</i>
+                        </button>
+                    </div>
+                </form>
+                <a onclick="openCreate()" class="btn right" id="boton_agregar"><i class="material-icons">add</i></a>
+            </div>
+            <!--Tabla de clientes-->
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <!--th funciona para agregar columnas-->
+                        <th>Nombre:</th>
+                        <th>Imagen:</th>
+                        <th>Editar:</th>
+                        <th>Eliminar:</th>
+                    </tr>
+                </thead>
+                <!--Cuerpo de tabla-->
+                <tbody id="tbody-rows">
+                </tbody>
+            </table>
+            <!--ModalEliminar-->
+            <div id="delete-modal" class="modal">
+                <div class="modal-content">
+                    <form class="row" method="post" id="delete-form">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input class="hide" type="number" id="id" name="id">
+                        <div class="row" id="contorno">
+                            <div class="col s12 m12 l12">
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <h5 id="titulo_dos" class="center-align"></h5>
+                                    </div>
+                                    <div class="col s12 m12 l12">
+                                        <div id="imgadv">
+                                            <img id="imagen_estado">
+                                            <div class="col s12 m12 l12" id="imgadv">
+                                                <h5 id="texto_dos"></h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="waves-effect waves-green btn-flat" id="boton_agregar"
+                                type="submit">Si</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">No</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--ModalEditar-->
+            <div id="update-modal" class="modal">
+                <div class="modal-content">
+                    <div class="row" id="contorno">
+                        <form class="row" method="post" id="update-form" enctype="multipart/form-data">
+                            <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                            <input class="hide" type="number" id="id_editar" name="id_editar">
+                            <div class="col s12 m12 l12">
+                                <h5 id="titulo">Editar Categoria</h5>
+                                <div class="row">
+                                    <div class="col s12 m12 l12" id="imagen3">
+                                        <div class="file-field input-field col s12 m12">
+                                            <div class="btn waves-effect tooltipped"
+                                                data-tooltip="Elegir imagen de al menos 500x500 px">
+                                                <i class="material-icons">image</i>
+                                                <input id="imagen_categoria" type="file" name="imagen_categoria"
+                                                    accept=".jpg, .png">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input type="text" class="file-path validate"
+                                                    placeholder="Formatos válidos: jpg y png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m12 l12">
+                                        <h6>Nombre categoria:</h6>
+                                        <div class="input-field col s12 m12 l12">
+                                            <input id="nombre_categoria" name="nombre_categoria" type="text" pattern="[A-Za-z]{1,50}"
+                                                class="validate" placeholder="ingrese nueva categoria" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Guardar</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+                </div>
+                </form>
+            </div>
+            <!--modal para añadir-->
+            <div id="add-modal" class="modal">
+                <div class="modal-content">
+                    <div class="row" id="contorno">
+                        <form class="row" method="post" id="add-form" enctype="multipart/form-data">
+                            <div class="col s12 m12 l12">
+                                <h5 id="titulo">Añadir nueva categoria</h5>
+                                <div class="row">
+                                    <div class="col s12 m12 l12" id="imagen3">
+                                        <div class="file-field input-field col s12 m12">
+                                            <div class="btn waves-effect tooltipped"
+                                                data-tooltip="Elegir imagen de al menos 500x500 px">
+                                                <i class="material-icons">image</i>
+                                                <input id="imagen_categoria" type="file" name="imagen_categoria"
+                                                    accept=".jpg, .png">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input type="text" class="file-path validate"
+                                                    placeholder="Formatos válidos: jpg y png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m12 l12">
+                                        <h6>Nombre categoria:</h6>
+                                        <div class="input-field col s12 m12 l12">
+                                            <input id="nombre_categoria" name="nombre_categoria" type="text" pattern="[A-Za-z]{1,50}"  
+                                                class="validate" placeholder="ingrese nueva categoria" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Guardar</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+                </div>
+                </form>
+            </div>
+    </main>
+
+    <footer>
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright" id="footer_final">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js "></script>
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/dashboard/logueado.js"></script>
+    <script src="../../controladores/dashboard/administrar_categoria.js"></script>
+
+</body>
+
+</html>

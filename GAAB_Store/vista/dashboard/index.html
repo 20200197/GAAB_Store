@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+
+    <head>
+        <!--Importar fuentes de Google-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Importar iconos-->
+        <link href="../../recursos/css/icons.css" rel="stylesheet">
+        <!--Import gaab_store.css-->
+        <link type="text/css" rel="stylesheet"
+            href="../../recursos/css/gaab_store_materialize.min.css"
+            media="screen,projection" />
+        <link type="text/css" rel="stylesheet"
+            href="../../recursos/css/styles_sitio_privado.css"
+            media="screen,projection" />
+
+        <!--Optimizacion para mobilee-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body>
+        <header>
+        </header>
+        <main>
+            <div class="row">
+                <br><br><br>
+                <div class="col s12 m6 l3 offset-l4 offset-m3">
+                    <div class="card small">
+                        <div class="card-content center-align">
+                            <!--Datos para iniciar sesión-->
+                            <span class="card-title">¡Inicia sesión!</span>
+                            <form action="" id="login-privado">
+                                <div class="input-field col s12 m12 l12">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="usuario" type="text"
+                                        class="validate" name="usuario"
+                                        required>
+                                    <label for="usuario">Usuario</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12">
+                                    <i class="material-icons prefix">vpn_key</i>
+                                    <input id="clave" type="password"
+                                        class="validate" name="clave" required>
+                                    <label for="clave">Contraseña</label>
+                                </div>
+                                <button class="waves-effect waves-light btn
+                                    deep-purple accent-2 col s12 m12 l12"
+                                    type="submit">Ingresar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <!--Agregamos el footer-->
+        <footer>
+            <!--Insertamos derechos de autor-->
+            <div class="footer-copyright" id="footer_final">
+                <div class="container">
+                       © 2022 Copyright
+                </div>
+              </div>
+        </footer>
+        <!--JavaScript al final de body para optimizar-->
+        <script src="../../recursos/js/materialize.min.js "></script>
+        <script src="../../recursos/js/sweetalert.min.js"></script>
+        <script src="../../controladores/componentes.js"></script>
+        <script src="../../controladores/dashboard/sin_loguear.js"></script>
+        <script src="../../controladores/dashboard/index.js"></script>
+
+    </body>
+
+</html>
