@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta charset="UTF-8">
 
 <head>
     <!--Importar fuentes de Google-->
@@ -7,233 +8,115 @@
     <!--Importar iconos-->
     <link href="../../recursos/css/icons.css" rel="stylesheet">
     <!--Import gaab_store.css-->
-    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css" media="screen,projection" />
-    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_publico.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_publico.css"
+        media="screen,projection" />
 
     <!--Optimizacion para mobilee-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
+    <!--Encabezado-->
     <header>
-
-        <!--Colocamos encabezado-->
-        <nav class="nav-extended" id="encabezado">
-            <div class="row" id="otro">
-                <div class="col s12 m12">
-                    <div class="row">
-                        <div class="col s12 m3">
-                            <div class="nav-wrapper">
-                                <!--Insertamos logo de GAAB Store-->
-                                <a href="../publico/index.html" class="brand-logo"><img src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
-                                <!--Insertamos navegador lateral-->
-                                <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-med-and-up"><img src="../../recursos/img/icono/menu_25px.png"></a>
-                            </div>
-                        </div>
-                        <div class="col  m1"></div>
-                        <div class="col s12 m4">
-                            <div class="col s1 m1">
-                                <img src="../../recursos/img/icono/search_25px.png">
-                            </div>
-                            <div class="col s10 m4">
-                                <input placeholder="textea un producto a buscar..." id="buscador" type="search" class="validate prefix">
-                            </div>
-                        </div>
-                        <div class="col s4 m4">
-                            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                                <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
-                                            src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
-                                <li><a class="waves-effect waves-red btn-danger " id="boton2" href="../publico/login.html">LOG IN</a></li>
-                                <li>
-                                    <a class="waves-effect waves-red btn-danger dropdown-trigger" data-target="dropdown"><img src="../../recursos/img/icono/user_35px.png"></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=" hide-on-med-and-down" id="menus">
-                <!--Insertamos un navegador de contenido con los menus visibles para publico-->
-                <div class="nav-content">
-                    <ul class="tabs tabs-transparent">
-                        <li class="tab" id="tabla"><a href="../publico/index.html">Inicio</a></li>
-                        <li class="tab" id="tabla"><a href="../publico/categorias.html">Productos</a></li>
-                        <li class="tab" id="tabla"><a href="../publico/noticias.html">Noticias</a></li>
-                        <li class="tab" id="tabla"><a href="../publico/soporte.html">Soporte</a></li>
-                        <li class="tab" id="tabla"><a href="../publico/reseña.html">Reseñas</a></li>
-                        <li class="tab" id="tabla"><a href="../publico/quienes_somos.html">¿Quiénes somos?</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <!--Insertamos las opciones del navegador lateral-->
-        <ul id="slide-out" class="sidenav">
-            <li>
-                <div class="user-view">
-                    <div class="background">
-                        <img src="../../recursos/img/imagenes/fondo.png">
-                    </div>
-                    <a href="#user"><img class="circle" src="../../recursos/img/imagenes/personaje.png"></a>
-                    <a href="#name"><span class="white-text name">John Doe</span></a>
-                    <a href="#email"><span class="white-text email">ejemplo@gmail.com</span></a>
-                </div>
-            </li>
-            <li><a class="waves-effect waves-red btn-danger" id="boton1">$00.00<img
-                        src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
-            <li><a href="../publico/categorias.html" class="waves-effect waves-red btn-danger">Productos</a>
-            </li>
-            <li><a href="../publico/noticias.html" class="waves-effect waves-red btn-danger">Noticias</a></li>
-            <li><a href="../publico/soporte.html" class="waves-effect waves-red btn-danger">Soporte</a></li>
-            <li><a href="../publico/reseña.html" class="waves-effect waves-red btn-danger">Reseñas</a></li>
-            <li><a href="../publico/quienes_somos.html" class="waves-effect waves-red btn-danger">¿Quiénes
-                    somos?</a></li>
-            <li>
-                <div class="divider"></div>
-            </li>
-            <li><a class="subheader">Filtros</a></li>
-            <div class="row">
-                <li>
-                    <div class="input-field col s12">
-                        <select>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">
-                                <h3>Option 1</h3>
-                            </option>
-                            <option value="2">
-                                <h3>Option 2</h3>
-                            </option>
-                            <option value="3">
-                                <h3> Option 3</h3>
-                            </option>
-                        </select>
-                        <label>Categoria</label>
-                    </div>
-                </li>
-            </div>
-            <div class="row">
-                <li>
-                    <div class="input-field col s12">
-                        <select>
-                            <option value="" disabled selected>Choose your option</option>
-                            <option value="1">
-                                <h3>Option 1</h3>
-                            </option>
-                            <option value="2">
-                                <h3>Option 2</h3>
-                            </option>
-                            <option value="3">
-                                <h3> Option 3</h3>
-                            </option>
-                        </select>
-                        <label>Categoria</label>
-                    </div>
-                </li>
-            </div>
-            <li><a href="../publico/login.html" class="waves-effect waves-red btn-danger">Log in</a></li>
-        </ul>
-        </div>
-        <!--Opciones de menú desplegable-->
-        <ul id='dropdown' class='dropdown-content'>
-            <li><a href="../publico/perfil.html">Editar perfil</a></li>
-            <li><a href="../publico/login.html">Cerrar Sesión</a></li>
-        </ul>
     </header>
+
+    <!--Opciones de menú desplegable-->
+    <ul id='dropdown' class='dropdown-content'>
+        <li><a href="../publico/perfil.html">Editar perfil</a></li>
+        <li><a href="../publico/login.html">Cerrar Sesión</a></li>
+    </ul>
 
     <main>
         <!--Colocamos navegador lateral-->
         <div class="hide-on-med-and-down" id="navegador_lateral">
-            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img src="../../recursos/img/icono/menu_25pxbl.png"></a>
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
         </div>
         <!--Colocamos imagen de inicio con texto-->
         <div class="container" id="contenedor_carrito">
             <div class="row">
-                <div class="col s12 m12 l10">
+                <div class="col s12 m12 l9">
+                    <h3 id="title"></h3>
                     <div class="card">
-                        <div class="card-content">
-                            <div class="card-title">Carrito de compra</div>
-                            <div class="divider"></div>
-                            <div class="row">
-                                <!--Detalles de producto-->
-                                <div class="col s12 m2 l2">
-                                    <img id="imagen_produc" src="../../recursos/img/imagenes/forro.jpg">
-                                </div>
-                                <div class="col s12 m10">
-                                    <div class="row">
-                                        <div class="col s12 m10 l10">
-                                            <h5>forro para auto</h5>
-                                        </div>
-                                        <div class="col s4 m1 l1">
-                                            <a href="#" class="eliminar">Eliminar</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m9 l9">
-                                            <div class="col s12 m3 l3">
-                                                <p>Precio: $0.00</p>
-                                            </div>
-                                            <div class="col s12 m3 l3">
-                                                <p>Cantidad: 1</p>
-                                            </div>
-                                            <div class="col s12 m3 l3">
-                                                <p>Subtotal: $0.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <!--Detalles de producto -->
-                                <div class="col s12 m2 l2">
-                                    <img class="responsive-img" src="../../recursos/img/imagenes/forro.jpg">
-                                </div>
-                                <div class="col s12 m10 l10">
-                                    <div class="row">
-                                        <div class="col s12 m10 l10">
-                                            <h5>forro para auto</h5>
-                                        </div>
-                                        <div class="col s4 m1 l1">
-                                            <a href="#" class="eliminar">Eliminar</a>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m9 l9">
-                                            <div class="col s12 m3 l3">
-                                                <p>Precio: $0.00</p>
-                                            </div>
-                                            <div class="col s12 m3 l3">
-                                                <p>Cantidad: 1</p>
-                                            </div>
-                                            <div class="col s12 m3 l3">
-                                                <p>Subtotal: $0.00</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-title">Carrito de compra</div>
+                        <div class="divider"></div>
+                        <div class="card-content" id="carrito">
+
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m12 l2 ">
-                    <div class="card col s12 m12 l12 xl12">
+                <div class="col s12 m12 l3">
+                    <div class="card col s12 m12 l12">
                         <!--Datos del producto-->
-                        <div class="card-content col s12 m12 l12 xl12" id="card-pedir">
+                        <div class="card-content col s12 m12 l12" id="card-pedir">
                             <div class="row">
-                                <p>Total: $0.00</p>
-                            </div>
-                            <div class="row">
-                                <p>Envío adicional: $0.00</p>
+                                <p id="total">Total: $0.00</p>
                             </div>
                             <div class="divider"></div>
                             <div class="row" id="row-btn">
-                                <a class="waves-effect waves-light btn" id="pedir_btcarrito">Hacer pedido</a>
+                                <a class="waves-effect waves-light btn" id="pedir_btcarrito"
+                                    onclick="openDirection()">Hacer pedido</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <input type="hidden" id="ids1">
     </main>
+    <!--Modal para agregar la dirección-->
+    <div id="modal-direccion" class="modal">
+        <form id="direccion-form">
+            <div class="modal-content">
+                <input type="hidden" id="ids" name="ids">
+                <h4>Indique una dirección de envío</h4>
+                <br>
+                <div class="input-field col s12 m12 l12">
+                    <input placeholder="Calle Leonardo da Vinci, 7, 41092" id="direction" type="text" class="validate"
+                        name="direction" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="waves-effect waves-green btn-flat boton_morado_contorno" type="submit">Finalizar pedido</button>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat boton_morado_contorno">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <!--modal para eliminar un producto del carrito-->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <form class="row" method="post" id="delete-form">
+                <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                <input class="hide" type="number" id="id_producto" name="id_producto">
+                <div class="row" id="contorno">
+                    <div class="col s12 m12 l12">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h5 class="center-align">Advertencia</h5>
+                            </div>
+                            <div class="col s12 m12 l12 center-align">
+                                <div id="imgadv">
+                                    <img id="imagen_estado" class="center-align"
+                                        src="../../recursos/img/icono/warning_100px.png">
+                                    <div class="col s12 m12 l12" id="imgadv">
+                                        <h5 id="texto_dos">¿Está seguro de eliminar este producto del carrito?</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-green btn-flat boton_morado_contorno" type="submit">Si</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat boton_morado_contorno">No</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!--Agregamos el footer-->
     <footer class="page-footer" id="footer_final">
         <div class="row">
@@ -241,7 +124,7 @@
                 <p class="grey-text text-lighten-4">
                     <a href="#!" class="brand-logo"> <img src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
                     <br>
-                    ¡Dale estilo a tu auto!  
+                    ¡Dale estilo a tu auto!
                 </p>
             </div>
             <div class="col s12 m3 l3 ">
@@ -251,16 +134,20 @@
                 <!--Redes sociales de contacto-->
                 <h5 class="white-text"><b>CONTACTO:</b></h5>
                 <ul>
-                    <a class="grey-text text-lighten-3" href="https://www.facebook.com/GAAB-Store-101949139089956" target="_blank"><img src="../../recursos/img/icono/facebook_25px.png"> &nbsp; Facebook
+                    <a class="grey-text text-lighten-3" href="https://www.facebook.com/GAAB-Store-101949139089956"
+                        target="_blank"><img src="../../recursos/img/icono/facebook_25px.png"> &nbsp; Facebook
                     </a>
                     &nbsp; &nbsp; &nbsp;
-                    <a class="grey-text text-lighten-3" href="#!"><img src="../../recursos/img/icono/twitter_25px.png" target="_blank"> &nbsp; Twitter
+                    <a class="grey-text text-lighten-3" href="#!"><img src="../../recursos/img/icono/twitter_25px.png"
+                            target="_blank"> &nbsp; Twitter
                     </a>
                 </ul>
-                <a class="grey-text text-lighten-3" href="https://www.instagram.com/gaabstoresv/" target="_blank"><img src="../../recursos/img/icono/Instagram_25px.png">&nbsp; Instagram
+                <a class="grey-text text-lighten-3" href="https://www.instagram.com/gaabstoresv/" target="_blank"><img
+                        src="../../recursos/img/icono/Instagram_25px.png">&nbsp; Instagram
                 </a>
                 &nbsp; &nbsp; &nbsp;
-                <a class="grey-text text-lighten-3" href="https://pin.it/24yTnOx" target="_blank"><img src="../../recursos/img/icono/pinterest_25px.png"> &nbsp; Pinterest
+                <a class="grey-text text-lighten-3" href="https://pin.it/24yTnOx" target="_blank"><img
+                        src="../../recursos/img/icono/pinterest_25px.png"> &nbsp; Pinterest
                 </a>
             </div>
             <div class="col s12 m4 ">
@@ -281,8 +168,10 @@
         </div>
     </footer>
     <!--JavaScript al final de body para optimizar-->
-    <script type="text/javascript" src="../../controladores/publico/gaab_store_carrito.min.js"></script>
-    <script type="text/javascript" src="../../controladores/publico/carrito.js"></script>
+    <script src="../../recursos/js/materialize.min.js "></script>
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/publico/carrito.js"></script>
 
 </body>
 

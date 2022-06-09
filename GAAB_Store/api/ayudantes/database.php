@@ -16,7 +16,7 @@ class Database
     {
         // Credenciales para establecer la conexión con la base de datos.
         $server = 'localhost';
-        $database = 'coffeeshop';
+        $database = 'dbGAABStore';
         $username = 'postgres';
         $password = 'Academica20_21';
 
@@ -149,7 +149,7 @@ class Database
                 self::$error = 'Registro ocupado, no se puede eliminar';
                 break;
             default:
-                self::$error = 'Ocurrió un problema en la base de datos';
+               // self::$error = 'Ocurrió un problema en la base de datos';
         }
     }
 

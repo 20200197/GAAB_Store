@@ -35,7 +35,8 @@
                 <form method="post" id="search-form">
                     <div class="input-field col s6 m4">
                         <i class="material-icons prefix">search</i>
-                        <input id="search" type="text" name="search" required>
+                        <input id="search" type="text" name="search" placeholder="Busque por nombre o apellido..."
+                            required>
                         <label for="search">Buscador</label>
                     </div>
                     <div class="input-field col s6 m4">
@@ -85,10 +86,15 @@
                             <tr>
                                 <th>Producto</th>
                                 <th>Cantidad</th>
+                                <th>Precio unitario</th>
+                                <th>Subtotal</th>
+                                <th>Fecha</th>
+                                <th>Estado factura</th>
                             </tr>
                         </thead>
                         <!--Cuerpo de tabla-->
                         <tbody id="tbody-compras">
+                            <td></td>
                         </tbody>
                     </table>
                 </div>
@@ -123,8 +129,8 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Aceptar</button>
-                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+                    <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Si</button>
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">No</a>
                 </div>
                 </form>
             </div>

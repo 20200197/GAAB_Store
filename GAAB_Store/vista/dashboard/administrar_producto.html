@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_privado.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <header>
+    </header>
+
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
+        </div>
+        <div class="container ">
+            <h3 id="titulo">Administrar productos</h3>
+            <div class="row">
+                <!-- Formulario de búsqueda -->
+                <form method="post" id="search-form">
+                    <div class="input-field col s6 m4">
+                        <i class="material-icons prefix">search</i>
+                        <input id="search" type="text" name="search" placeholder="Busque por nombre de producto o categoría..." required>
+                        <label for="search">Buscador</label>
+                    </div>
+                    <div class="input-field col s6 m4">
+                        <button type="submit" class="btn-floating waves-effect blue tooltipped" data-tooltip="Buscar">
+                            <i class="material-icons">check</i>
+                        </button>
+                    </div>
+                </form>
+                <div class="col s12 m4 right-align">
+                    <a class="btn modal-trigger right" onclick="openCreate()" id="boton_agregar">
+                        <i class="material-icons">add</i>
+                    </a>
+                </div>
+            </div>
+            <!--Tabla de clientes-->
+            <table class="responsive-table">
+                <thead>
+                    <!--Campos-->
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Categoria</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Estado</th>
+                        <th>Comentarios</th>
+                        <th>Stock</th>
+                        <th>Editar</th>
+                        <th>Dar de baja</th>
+                    </tr>
+                </thead>
+                <!--Cuerpo de tabla-->
+                <tbody id="tbody-rows">
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <!--modal para añadir un nuevo producto-->
+    <div id="modal-add" class="modal">
+        <div class="modal-content">
+            <div class="row" id="contorno">
+                <div class="col s12 m12 l12">
+                    <h5 id="titulo">Añadir producto</h5>
+                    <form id="add-form" method="post" enctype="multipart/form-data">
+                        <div class="file-field col s12 m12 l12">
+                            <img src="" alt="" class="responsive-img" id="image-add">
+                            <div class="btn waves-effect tooltipped"
+                                data-tooltip="Elegir imagen de al menos 500x500 px">
+                                <i class="material-icons">image</i>
+                                <input id="archivo" type="file" name="archivo" accept=".jpg, .png" required>
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input type="text" class="file-path validate" placeholder="Formatos válidos: jpg y png">
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Nombre</h6>
+                            <input placeholder="" type="text" name="nombre_producto" id="nombre_producto"
+                                pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" required>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Tipo</h6>
+                            <select id="tipo-auto" name="tipo-auto" required>
+                            </select>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Precio</h6>
+                            <input placeholder="" type="number" name="precio_producto" step="0.01" required>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Categoria</h6>
+                            <select id="categoria" name="categoria" required>
+                            </select>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Stock</h6>
+                            <input placeholder="" type="number" name="stock_producto" min="1" required>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Descripción</h6>
+                            <textarea id="textarea1" class="materialize-textarea" placeholder="lorem ipsum"
+                                name="descripcion" required></textarea>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Guardar</button>
+            <a href="#" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+        </div>
+        </form>
+    </div>
+    <!--modal para editar un producto-->
+    <div id="update-modal" class="modal">
+        <div class="modal-content">
+            <div class="row" id="contorno">
+                <div class="col s12 m12 l12">
+                    <h5 id="titulo">Editar producto</h5>
+                    <form id="update-form" method="post" enctype="multipart/form-data">
+                        <input class="hide" id="id" name="id" type="text">
+                        <div class="file-field col s12 m12 l12">
+                            <img src="" alt="" class="responsive-img" id="image-add">
+                            <div class="btn waves-effect tooltipped"
+                                data-tooltip="Elegir imagen de al menos 500x500 px">
+                                <i class="material-icons">image</i>
+                                <input id="archivo" type="file" name="archivo" accept=".jpg, .png">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input type="text" class="file-path validate" placeholder="Formatos válidos: jpg y png">
+                            </div>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Nombre</h6>
+                            <input placeholder="" type="text" name="nombre" id="nombre"
+                                pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" required>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Tipo</h6>
+                            <select id="tipo-auto-update" name="tipo-auto-update" required>
+                            </select>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Precio</h6>
+                            <input placeholder="" type="number" id="precio_producto" name="precio_producto" step="0.01"
+                                required>
+                        </div>
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Categoria</h6>
+                            <select id="categoria_update" name="categoria_update" required>
+                            </select>
+                        </div>
+                        <!-- <div class="input-field col s12 m6 l6">
+                            <h6>Stock</h6>
+                            <input placeholder="" type="number" id="stock_producto" name="stock_producto" required>
+                        </div> -->
+                        <div class="input-field col s12 m12 l12">
+                            <h6>Descripción</h6>
+                            <textarea class="materialize-textarea" placeholder="" id="descripcion_producto"
+                                name="descripcion_producto" required></textarea>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Guardar</button>
+            <a href="#" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+        </div>
+        </form>
+    </div>
+    <!--Modal de stock-->
+    <div id="stock-modal" class="modal">
+        <div class="modal-content">
+            <div class="row" id="contorno">
+                <div class="col s12 m12 l12">
+                    <h5 id="titulo">Añadir más productos</h5>
+                    <form id="stock-form" method="post" enctype="multipart/form-data">
+                        <!--Campo de id oculto-->
+                        <input class="hide" id="id_stock" name="id_stock" type="text">
+                        <input class="hide" id="cantidad_producto" name="cantidad_producto" type="number">
+                        <div class="input-field col s12 m6 l6">
+                            <h6>Stock</h6>
+                            <input placeholder="" type="number" id="producto_stock" name="producto_stock" min="1"
+                                required>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Guardar</button>
+            <a href="#" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+        </div>
+        </form>
+    </div>
+    <!--Modal para ver comentarios de producto-->
+    <div id="coment-modal" class="modal">
+        <div class="coment-content">
+            <div class="row" id="contorno">
+                <div class="col s12 m12 l12">
+                    <h5 id="titulo">Añadir más productos</h5>
+                    <form id="coment-form" method="post" enctype="multipart/form-data">
+                        <!--Campo de id oculto-->
+                        <table class="responsive-table">
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Comentario</th>
+                                    <th>Estado</th>
+                                    <th>Dar de baja</th>
+                                </tr>
+                            </thead>
+                            <!--Cuerpo de tabla-->
+                            <tbody id="tbody-coment">
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+        </div>
+        </form>
+    </div>
+
+    <!--Modal para eliminar-->
+    <div id="delete-modal" class="modal">
+        <div class="modal-content">
+            <div class="row" id="contorno">
+                <form class="row" method="post" id="delete-form" enctype="multipart/form-data">
+                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                    <input class="hide" type="number" id="id_producto" name="id_producto">
+                    <input class="hide" type="number" id="id_estado_producto" name="id_estado_producto">
+                    <div class="col s12 m12 l12">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h6 id="titulo_im" class="center-align"></h6>
+                            </div>
+                            <div class="col s12 m12 l12">
+                                <div id="imgadv">
+                                    <img id="imagen_estado" height="70">
+                                    <div class="col s12 m12 l12" id="imgadv">
+                                        <p id="texto_im"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="waves-effect waves-green btn-flat" id="boton_g" type="submit">Aceptar</button>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_c">Cancelar</a>
+            </div>
+            </form>
+        </div>
+    </div>
+    <!--Modal para editar estado valoracion-->
+    <div id="updateComentE-modal" class="modal">
+        <div class="modal-content">
+            <div class="row" id="contorno">
+                <form class="row" method="post" id="updateComentE-form" enctype="multipart/form-data">
+                    <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                    <input class="hide" type="number" id="id_productoE" name="id_productoE">
+                    <input class="hide" type="number" id="id_valoracion" name="id_valoracion">
+                    <input class="hide" type="text" id="estado_valoracion" name="estado_valoracion">
+                    <div class="col s12 m12 l12">
+                        <div class="row">
+                            <div class="col s12 m12 l12">
+                                <h6 id="titulo_comentE" class="center-align"></h6>
+                            </div>
+                            <div class="col s12 m12 l12">
+                                <div id="imgadv">
+                                    <img id="imagen_comentE" height="70">
+                                    <div class="col s12 m12 l12" id="imgadv">
+                                        <p id="texto_comentE"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button class="waves-effect waves-green btn-flat" id="boton_g" type="submit">Aceptar</button>
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_c">Cancelar</a>
+            </div>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright" id="footer_final">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js"></script>
+    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/dashboard/logueado.js"></script>
+    <script src="../../controladores/dashboard/Producto.js"></script>
+
+</body>
+
+</html>

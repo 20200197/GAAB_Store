@@ -35,7 +35,7 @@
                 <form method="post" id="search-form">
                     <div class="input-field col s6 m4">
                         <i class="material-icons prefix">search</i>
-                        <input id="search" type="text" name="search" required>
+                        <input id="search" type="text" name="search" placeholder="Busque por categoría..." required>
                         <label for="search">Buscador</label>
                     </div>
                     <div class="input-field col s6 m4">
@@ -86,8 +86,8 @@
                         </div>
                         <div class="modal-footer">
                             <button class="waves-effect waves-green btn-flat" id="boton_agregar"
-                                type="submit">Guardar</button>
-                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+                                type="submit">Si</button>
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">No</a>
                         </div>
                     </form>
                 </div>
@@ -119,7 +119,7 @@
                                     <div class="col s12 m12 l12">
                                         <h6>Nombre categoria:</h6>
                                         <div class="input-field col s12 m12 l12">
-                                            <input id="nombre_categoria" name="nombre_categoria" type="text"
+                                            <input id="nombre_categoria" name="nombre_categoria" type="text" pattern="[A-Za-z]{1,50}"
                                                 class="validate" placeholder="ingrese nueva categoria" required>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                     <div class="col s12 m12 l12">
                                         <h6>Nombre categoria:</h6>
                                         <div class="input-field col s12 m12 l12">
-                                            <input id="nombre_categoria" name="nombre_categoria" type="text"
+                                            <input id="nombre_categoria" name="nombre_categoria" type="text" pattern="[A-Za-z]{1,50}"  
                                                 class="validate" placeholder="ingrese nueva categoria" required>
                                         </div>
                                     </div>

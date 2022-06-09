@@ -24,6 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                //Buscar categoria
             case 'search':
                 $_POST = $administrar_categoria->validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -37,6 +38,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                //Crear filas
             case 'create':
                 $_POST = $administrar_categoria->validateForm($_POST);
                 if (!$administrar_categoria->setNombre_categoria($_POST['nombre_categoria'])) {
@@ -56,27 +58,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'readOne':
-                    if (!$administrar_categoria->setId($_POST['id'])) {
-                        $result['exception'] = 'Categoria de producto incorrecto';
-                    } elseif ($result['dataset'] = $administrar_categoria->readOne()) {
-                        $result['status'] = 1;
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'Categoria de producto inexistente';
-                    }
-                    break;
-        
+            case 'readOne':
+                if (!$administrar_categoria->setId($_POST['id'])) {
+                    $result['exception'] = 'Categoria de producto incorrecto';
+                } elseif ($result['dataset'] = $administrar_categoria->readOne()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Categoria de producto inexistente';
+                }
+                break;
+                //Actualizar filas
             case 'update':
                 $_POST = $administrar_categoria->validateForm($_POST);
                 if (!$administrar_categoria->setId($_POST['id_editar'])) {
                     $result['exception'] = 'Categoria de producto incorrecto';
-                }elseif (!$data = $administrar_categoria->readOne()) {
+                } elseif (!$data = $administrar_categoria->readOne()) {
                     $result['exception'] = 'Categoria de producto inexistente ';
                 } elseif (!$administrar_categoria->setNombre_categoria($_POST['nombre_categoria'])) {
                     $result['exception'] = 'Categoria de producto incorrecto';
-                }elseif (!is_uploaded_file($_FILES['imagen_categoria']['tmp_name'])) {
+                } elseif (!is_uploaded_file($_FILES['imagen_categoria']['tmp_name'])) {
                     if ($administrar_categoria->updateRow($data['imagen_categoria'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Categoria de producto modificada correctamente';
@@ -96,6 +98,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Eliminar fila
             case 'delete':
                 if (!$administrar_categoria->setId($_POST['id'])) {
                     $result['exception'] = 'Categoria de producto incorrecta';
@@ -114,7 +117,6 @@ if (isset($_GET['action'])) {
                 break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
-    
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
         header('content-type: application/json; charset=utf-8');

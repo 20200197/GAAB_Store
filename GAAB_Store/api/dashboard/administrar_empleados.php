@@ -24,6 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                //Buscar empleado
             case 'search':
                 $_POST = $empleado->validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -37,6 +38,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                //Crear fila
             case 'create':
                 $_POST = $empleado->validateForm($_POST);
                 if (!$empleado->setNombre($_POST['nombre_empleado'])) {
@@ -45,10 +47,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellidos incorrectos';
                 } elseif (!$empleado->setCorreo($_POST['correo_empleado'])) {
                     $result['exception'] = 'Correo incorrecto';
+                    //Vertficamos si hay Correo idéntico
+                } elseif ($empleado->read('correo_empleado', $empleado->getCorreo())) {
+                    $result['exception'] = 'El correo ingresado ya esta registrado';
                 } elseif (!$empleado->setUsuario($_POST['usuario_empleado'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$empleado->setDui($_POST['dui_empleado'])) {
                     $result['exception'] = 'Dui incorrecto';
+                    //Vertficamos si hay Dui idéntico
+                } elseif ($empleado->read('dui_empleado', $empleado->getDui())) {
+                    $result['exception'] = 'El Dui ingresado ya esta registrado';
                 } elseif (!is_uploaded_file($_FILES['archivo']['tmp_name'])) {
                     $result['exception'] = 'Seleccione una imagen';
                 } elseif (!$empleado->setImagen($_FILES['archivo'])) {
@@ -68,7 +76,7 @@ if (isset($_GET['action'])) {
                 } elseif (!$empleado->setImagen($_FILES['archivo'])) {
                     $result['exception'] = $categoria->getFileError();
                 } elseif ($empleado->createRow()) {
-                    if ($empleado->saveFile($_FILES['archivo'], $empleado->getRuta(), $empleado->getImagen())) {
+                    if ($empleado->saveFile($_FILES['archivo'], $empleado->getRut(), $empleado->getImagen())) {
                         $result['status'] = 1;
                         $result['message'] = 'Empleado registrado correctamente';
                     } else {
@@ -87,6 +95,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Empleado inexistente';
                 }
                 break;
+                //Actualizar fila
             case 'update':
                 $_POST = $empleado->validateForm($_POST);
                 if (!$empleado->setId($_POST['id'])) {
@@ -99,6 +108,9 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellido incorrecto';
                 } elseif (!$empleado->setCorreo($_POST['correo_em'])) {
                     $result['exception'] = 'Correo incorrecto';
+                    //Vertficamos si hay Correo idéntico
+                } elseif ($empleado->read('correo_empleado', $empleado->getCorreo())) {
+                    $result['exception'] = 'El correo ingresado ya esta registrado';
                 } elseif (!$empleado->setUsuario($_POST['usuario_em'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$empleado->setDui($_POST['dui_em'])) {
@@ -124,7 +136,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = $empleado->getFileError();
                 } elseif ($empleado->updateRow($data['imagen_perfil_empleado'])) {
                     $result['status'] = 1;
-                    if ($empleado->saveFile($_FILES['img_em'], $empleado->getRuta(), $empleado->getImagen())) {
+                    if ($empleado->saveFile($_FILES['img_em'], $empleado->getRut(), $empleado->getImagen())) {
                         $result['message'] = 'Empleado modificado correctamente';
                     } else {
                         $result['message'] = 'Empleado modificado pero no se guardó la imagen';
@@ -133,6 +145,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Actualizar empleado 
             case 'update_':
                 $_POST = $empleado->validateForm($_POST);
                 if (!$empleado->setId($_POST['id'])) {
@@ -145,10 +158,16 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'Apellido incorrecto';
                 } elseif (!$empleado->setCorreo($_POST['correo_em'])) {
                     $result['exception'] = 'Correo incorrecto';
+                    //Evaluamos correo que no se repita
+                } elseif ($empleado->readD('correo_empleado', $empleado->getCorreo())) {
+                    $result['exception'] = 'Este correo ya esta registrado';
                 } elseif (!$empleado->setUsuario($_POST['usuario_em'])) {
                     $result['exception'] = 'Usuario incorrecto';
                 } elseif (!$empleado->setDui($_POST['dui_em'])) {
                     $result['exception'] = 'Dui incorrecto';
+                    //Evaluamos el dui que no se repita
+                } elseif ($empleado->readD('dui_empleado', $empleado->getDui())) {
+                    $result['exception'] = 'Este Dui ya esta registrado';
                 } elseif (!$empleado->setEstado(isset($_POST['estado_em']) ? 1 : 0)) {
                     $result['exception'] = 'Estado incorrecto';
                 } elseif (!isset($_POST['id_tipo_em'])) {
@@ -166,7 +185,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = $empleado->getFileError();
                 } elseif ($empleado->updateRow_($data['imagen_perfil_empleado'])) {
                     $result['status'] = 1;
-                    if ($empleado->saveFile($_FILES['img_em'], $empleado->getRuta(), $empleado->getImagen())) {
+                    if ($empleado->saveFile($_FILES['img_em'], $empleado->getRut(), $empleado->getImagen())) {
                         $result['message'] = 'Empleado modificado correctamente';
                     } else {
                         $result['message'] = 'Empleado modificado pero no se guardó la imagen';
@@ -175,6 +194,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Eliminar fila
             case 'delete':
                 if (!$producto->setId($_POST['id'])) {
                     $result['exception'] = 'Producto incorrecto';

@@ -24,6 +24,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay datos registrados';
                 }
                 break;
+                //Buscar tipo de auto
             case 'search':
                 $_POST = $tipo_auto->validateForm($_POST);
                 if ($_POST['search'] == '') {
@@ -37,6 +38,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = 'No hay coincidencias';
                 }
                 break;
+                //Crear fila
             case 'create':
                 $_POST = $tipo_auto->validateForm($_POST);
                 if (!$tipo_auto->setTipo_auto($_POST['tipo_auto'])) {
@@ -56,27 +58,27 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
-                case 'readOne':
-                    if (!$tipo_auto->setId($_POST['id'])) {
-                        $result['exception'] = 'Tipo de auto incorrecta';
-                    } elseif ($result['dataset'] = $tipo_auto->readOne()) {
-                        $result['status'] = 1;
-                    } elseif (Database::getException()) {
-                        $result['exception'] = Database::getException();
-                    } else {
-                        $result['exception'] = 'Tipo de auto inexistente';
-                    }
-                    break;
-        
+            case 'readOne':
+                if (!$tipo_auto->setId($_POST['id'])) {
+                    $result['exception'] = 'Tipo de auto incorrecta';
+                } elseif ($result['dataset'] = $tipo_auto->readOne()) {
+                    $result['status'] = 1;
+                } elseif (Database::getException()) {
+                    $result['exception'] = Database::getException();
+                } else {
+                    $result['exception'] = 'Tipo de auto inexistente';
+                }
+                break;
+                //Actualizar fila
             case 'update':
                 $_POST = $tipo_auto->validateForm($_POST);
                 if (!$tipo_auto->setId($_POST['id_editar'])) {
                     $result['exception'] = 'Tipo de auto incorrecto';
-                }elseif (!$data = $tipo_auto->readOne()) {
+                } elseif (!$data = $tipo_auto->readOne()) {
                     $result['exception'] = 'Tipo de auto inexistente ';
                 } elseif (!$tipo_auto->setTipo_auto($_POST['tipo_auto'])) {
                     $result['exception'] = 'Tipo de auto incorrecto';
-                }elseif (!is_uploaded_file($_FILES['imagen_tipo_auto']['tmp_name'])) {
+                } elseif (!is_uploaded_file($_FILES['imagen_tipo_auto']['tmp_name'])) {
                     if ($tipo_auto->updateRow($data['imagen_tipo_auto'])) {
                         $result['status'] = 1;
                         $result['message'] = 'Tipo de auto modificado correctamente';
@@ -96,6 +98,7 @@ if (isset($_GET['action'])) {
                     $result['exception'] = Database::getException();
                 }
                 break;
+                //Eliminar fila
             case 'delete':
                 if (!$tipo_auto->setId($_POST['id'])) {
                     $result['exception'] = 'Tipo de auto incorrecta';
@@ -114,7 +117,6 @@ if (isset($_GET['action'])) {
                 break;
             default:
                 $result['exception'] = 'Acción no disponible dentro de la sesión';
-    
         }
         // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
         header('content-type: application/json; charset=utf-8');

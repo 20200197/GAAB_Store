@@ -55,18 +55,20 @@
                         </div>
                         <div class="col s12 m12 l6">
                             <h6>Nombre:</h6>
-                            <input id="nombre_empleado" type="text" name="nombre_empleado" class="validate" required>
+                            <input id="nombre_empleado" type="text" name="nombre_empleado" class="validate"
+                                pattern="[A-Za-z]{1,50}" required>
                             <div class="row">
                                 <div class="col s12 m12 l12">
                                     <h6>Apellido:</h6>
                                     <input id="apellido_empleado" type="text" name="apellido_empleado" class="validate"
-                                        required>
+                                        pattern="[A-Za-z]{1,50}" required>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s12 m12 l12">
                                     <h6>Usuario:</h6>
-                                    <input id="usuario_empleado" type="text" name="usuario_empleado" class="validate">
+                                    <input id="usuario_empleado" type="text" name="usuario_empleado" class="validate"
+                                        pattern="[/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ\s\,\;\.\-]{]{1,50}" required>
                                 </div>
                             </div>
                         </div>
@@ -84,18 +86,20 @@
                                     <h6>DUI:</h6>
                                     <input id="dui_empleado" type="text" name="dui_empleado" class="validate" disabled>
                                 </div>
+                                <div class="col s12 m12 l12">
+                                </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col s12 m12 l12">
-                                <a onclick="openUpdate(document.getElementById('id').value)"
-                                    class="waves-effect white black-text waves-light btn" id="boton_c">Cambiar
-                                    contraseña</a>
-                            </div>
-                            <div class="row"></div>
-                            <div class="col s12 m12 l12">
-                                <button class="waves-effect white black-text waves-light btn" id="boton_g"
-                                    type="submit">Guardar perfil</button>
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <div class="col s12 m12 l12 center-align">
+                                    <a onclick="openUpdate(document.getElementById('id').value)"
+                                        class="waves-effect  white-text waves-light btn-flat btn-floating boton_morado">
+                                        <i class="material-icons center-align">security</i></a>
+                                    <button
+                                        class="waves-effect  white-text waves-light btn-flat btn-floating boton_morado"
+                                        type="submit"><i class="material-icons center-align">save</i></button>
+                                </div>
                             </div>
                         </div>
                 </div>
@@ -131,40 +135,43 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="waves-effect waves-light  black-text btn-flat" id="boton_g" type="submit">Aceptar</button>
-                <a href="#!" class="modal-close waves-effect black-text waves-light btn-flat" id="boton_c">Cancelar</a>
+                <button class="waves-effect waves-light  white-text btn-flat boton_morado_contorno" id="boton_g"
+                    type="submit">Aceptar</button>
+                <a href="#!" class="modal-close waves-effect white-text waves-light btn-flat boton_morado_contorno" id="boton_c">Cancelar</a>
             </div>
             </form>
         </div>
-    </div>
-    <!--ModalCerrarSesion-->
-    <div id="log-modal" class="modal">
-        <div class="modal-content">
-            <div class="row" id="contorno">
-                <form class="row" method="post" id="log-form" enctype="multipart/form-data">
-                    <div class="col s12 m12 l12">
-                        <div class="row">
-                            <div class="col s12 m12 l12">
-                                <h6 id="titulo_im" class="center-align"></h6>
-                            </div>
-                            <div class="col s12 m12 l12">
-                                <div id="imgadv">
-                                    <img id="imagen_estado" height="70">
-                                    <div class="col s12 m12 l12" id="imgadv">
-                                        <p id="texto_im"></p>
+        </div>
+        <!--ModalCerrarSesion-->
+        <div id="log-modal" class="modal">
+            <div class="modal-content">
+                <div class="row" id="contorno">
+                    <form class="row" method="post" id="log-form" enctype="multipart/form-data">
+                        <div class="col s12 m12 l12">
+                            <div class="row">
+                                <div class="col s12 m12 l12">
+                                    <h6 id="titulo_im" class="center-align"></h6>
+                                </div>
+                                <div class="col s12 m12 l12">
+                                    <div id="imgadv">
+                                        <img id="imagen_estado" height="70">
+                                        <div class="col s12 m12 l12" id="imgadv">
+                                            <p id="texto_im"></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="waves-effect waves-green black-text btn-flat" id="boton_g"
+                        type="submit">Aceptar</button>
+                    <a href="#!" class="modal-close waves-effect black-text waves-green btn-flat"
+                        id="boton_c">Cancelar</a>
+                </div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button class="waves-effect waves-green black-text btn-flat" id="boton_g" type="submit">Aceptar</button>
-                <a href="#!" class="modal-close waves-effect black-text waves-green btn-flat" id="boton_c">Cancelar</a>
-            </div>
-            </form>
         </div>
-    </div>
     </main>
     <!--Agregamos el footer-->
     <footer>

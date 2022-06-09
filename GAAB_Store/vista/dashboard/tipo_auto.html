@@ -35,7 +35,7 @@
                 <form method="post" id="search-form">
                     <div class="input-field col s6 m4">
                         <i class="material-icons prefix">search</i>
-                        <input id="search" type="text" name="search" required>
+                        <input id="search" type="text" name="search" placeholder="Buscar poe tipo de auto..." required>
                         <label for="search">Buscador</label>
                     </div>
                     <div class="input-field col s6 m4">
@@ -86,8 +86,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Guardar</button>
-                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">Cancelar</a>
+                        <button class="waves-effect waves-green btn-flat" id="boton_agregar" type="submit">Si</button>
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat" id="boton_agregar">No</a>
                     </div>
                 </form>
             </div>
@@ -120,7 +120,7 @@
                                         <div class="col s12 m12">
                                             <h6>Nombre del tipo de auto:</h6>
                                             <div class="input-field col s12 m12 l12">
-                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate"
+                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate" pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" 
                                                     placeholder="ingrese tipo de auto" required>
                                             </div>
                                         </div>
@@ -162,7 +162,7 @@
                                         <div class="col s12 m12">
                                             <h6>Nombre del tipo de auto:</h6>
                                             <div class="input-field col s12 m12 l12">
-                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate"
+                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate" pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" 
                                                     placeholder="ingrese tipo de auto" required>
                                             </div>
                                         </div>

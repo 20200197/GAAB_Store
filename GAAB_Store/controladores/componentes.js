@@ -5,7 +5,7 @@
 /*
 *   Constante para establecer la ruta del servidor.
 */
-const SERVER = 'http://localhost/coffeeshop/api/';
+const SERVER = 'http://localhost/GAAB_Store/api/';
 
 /*
 *   Función para obtener todos los registros disponibles en los mantenimientos de tablas (operación read).
@@ -17,7 +17,7 @@ const SERVER = 'http://localhost/coffeeshop/api/';
 function readRows(api) {
     fetch(api + 'readAll', {
         method: 'get'
-    }).then(function (request) {
+    }) .then(function (request) {
         // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
         if (request.ok) {
             // Se obtiene la respuesta en formato JSON.
@@ -31,6 +31,56 @@ function readRows(api) {
                 }
                 // Se envían los datos a la función del controlador para llenar la tabla en la vista.
                 fillTable(data);
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}
+
+//Función para leer mis pedidos
+function readRowsMisPedidos(api) {
+    fetch(api + 'readAll', {
+        method: 'get'
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            // Se obtiene la respuesta en formato JSON.
+            request.json().then(function (response) {
+                let data = [];
+                // Se comprueba si la respuesta es satisfactoria para obtener los datos, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    data = response.dataset;
+                } else {
+                    sweetAlert(4, response.exception, 'index.html');
+                }
+                // Se envían los datos a la función del controlador para llenar la tabla en la vista.
+                fillTable(data);
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}
+
+//Para leer imagen
+function readRow(api) {
+    fetch(api + 'readRegistro', {
+        method: 'get'
+    }) .then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            // Se obtiene la respuesta en formato JSON.
+            request.json().then(function (response) {
+                let data = [];
+                // Se comprueba si la respuesta es satisfactoria para obtener los datos, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    data = response.dataset;
+                } else {
+                    sweetAlert(4, response.exception, null);
+                }
+                // Se envían los datos a la función del controlador para llenar la tabla en la vista.
+                fillTablee(data);
             });
         } else {
             console.log(request.status + ' ' + request.statusText);
@@ -58,6 +108,31 @@ function searchRows(api, form) {
                 if (response.status) {
                     // Se envían los datos a la función del controlador para que llene la tabla en la vista y se muestra un mensaje de éxito.
                     fillTable(response.dataset);
+                    sweetAlert(1, response.message, null);
+                } else {
+                    sweetAlert(2, response.exception, null);
+                }
+            });
+        } else {
+            console.log(request.status + ' ' + request.statusText);
+        }
+    });
+}
+
+//Función para leer productos de buscador
+function searchRowsProductos(api, form) {
+    fetch(api + 'search', {
+        method: 'post',
+        body: new FormData(document.getElementById(form))
+    }).then(function (request) {
+        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+        if (request.ok) {
+            // Se obtiene la respuesta en formato JSON.
+            request.json().then(function (response) {
+                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+                if (response.status) {
+                    // Se envían los datos a la función del controlador para que llene la tabla en la vista y se muestra un mensaje de éxito.
+                    readProductosBuscador(response.dataset);
                     sweetAlert(1, response.message, null);
                 } else {
                     sweetAlert(2, response.exception, null);
@@ -369,3 +444,4 @@ function logOut() {
         }
     });
 }
+

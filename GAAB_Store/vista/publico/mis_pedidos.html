@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Codificación de caracteres para el documento -->
+    <meta charset="utf-8">
+    <!--Importar fuentes de Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Importar iconos-->
+    <link href="../../recursos/css/icons.css" rel="stylesheet">
+    <!--Import gaab_store.css-->
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/gaab_store_materialize.min.css"
+        media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="../../recursos/css/styles_sitio_publico.css"
+        media="screen,projection" />
+
+    <!--Optimizacion para mobilee-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <!--Encabezado -->
+    <header>
+    </header>
+
+    <main>
+        <!--Colocamos navegador lateral-->
+        <div class="hide-on-med-and-down" id="navegador_lateral">
+            <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><img
+                    src="../../recursos/img/icono/menu_25pxbl.png"></a>
+        </div>
+        <h3 id="titulo">Mis pedidos</h3>
+        <!--Preguntsa frecuentes-->
+        <div class="container" id="contenedor_principal">
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <!--Tabla de pedidos-->
+                    <table class="responsive-table">
+                        <thead>
+                            <tr>
+                                <th>Precio total</th>
+                                <th>Número de orden</th>
+                                <th>Dirección</th>
+                                <th>Fecha</th>
+                                <th>Detalle de factura</th>
+                            </tr>
+                        </thead>
+                        <!--Cuerpo de tabla-->
+                        <tbody id="tbody-misPedidos">
+                        </tbody>
+                    </table>
+                </div>
+                <!--ModalVerDetalle-->
+                <div id="detalle-modal" class="modal">
+                    <div class="modal-content">
+                        <div class="row" id="contorno">
+                            <h5 id="titulo">Detalle de factura</h5>
+                            <table>
+                                <thead>
+                                    <!--Campos-->
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio unitario</th>
+                                        <th>Subtotal</th>
+                                        <th>Fecha</th>
+                                        <th>Estado factura</th>
+                                        <th>Comentar</th>
+                                    </tr>
+                                </thead>
+                                <!--Cuerpo de tabla-->
+                                <tbody id="tbody-detalle">
+                                    <td></td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!"
+                            class="modal-close waves-effect waves-green btn-flat boton_morado_contorno">Cancelar</a>
+                    </div>
+                </div>
+                <!--Modal para comentar los productos comprados-->
+                <div id="modal-comentar" class="modal">
+                    <form id="comentar-form" class="row center-align" method="post">
+                        <div class="modal-content">
+                            <div class="row" id="contorno">
+                                <input class="hide" type="number"  id="id_detalle_factura" name="id_detalle_factura" >              
+                                <div class="row" id="row_produc"></div>
+                                <br>
+                                <!--Espacio donde ira  el espacio par comentar-->
+                                <div class="row center-align" id="comentario_compra">
+                                    <div class="col s12 m12 l12 center-align" id="col">
+                                        <p class="calidad center-align">
+                                            <input id="radio5" type="radio" name="estrellas" value="5"
+                                                class="center-align radio">
+                                            <label for="radio5" class="center-align">★</label>
+                                            <input id="radio4" type="radio" name="estrellas" value="4"
+                                                class="center-align radio">
+                                            <label for="radio4" class="center-align">★</label>
+                                            <input id="radio3" type="radio" name="estrellas" value="3"
+                                                class="center-align radio">
+                                            <label for="radio3" class="center-align">★</label>
+                                            <input id="radio2" type="radio" name="estrellas" value="2"
+                                                class="center-align radio">
+                                            <label for="radio2" class="center-align">★</label>
+                                            <input id="radio1" type="radio" name="estrellas" value="1"
+                                                class="center-align radio">
+                                            <label for="radio1" class="center-align">★</label>
+                                            <input id="radio0" type="radio" name="estrellas" value="0"
+                                                class="center-align radio hide" checked>
+                                            <label for="radio0" class="center-align hide">★</label>
+                                           
+                                        </p>
+                                        <div class="col s12 m12 l12">
+                                            <div class="row center-align">
+                                                <div class="col s12 m12 l12 center-align" >
+                                                    <div class="row center-align">
+                                                        <div class="input-field col s10 m10 l9 center-align">
+                                                            <textarea id="comentario" name="comentario"
+                                                                class="materialize-textarea validate" required></textarea>
+                                                            <label for="comentario">Comentar</label>
+                                                            <i class="material-icons prefix">comment</i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="waves-effect waves-green btn-flat boton_morado_contorno"
+                                    type="submit">Comentar</button>
+                                <a href="#!"
+                                    class="modal-close waves-effect waves-green btn-flat boton_morado_contorno">Cerrar</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </main>
+    <!--Agregamos el footer-->
+    <footer class="page-footer" id="footer_final">
+
+        <div class="row">
+            <div class="col  s12 m2 l14">
+                <p class="grey-text text-lighten-4">
+                    <a href="#!" class="brand-logo"> <img src="../../recursos/img/logo/logo_gaab_white_png_105.png"></a>
+                    <br>
+                    ¡Dale estilo a tu auto!
+                </p>
+            </div>
+            <div class="col s12 m3 ">
+                GAAB Store se compromete a brinarte los mejores servicios para renovar el estilo de tu auto
+            </div>
+            <div class="col s12 m3 ">
+                <!--Redes sociales de contacto-->
+                <h5 class="white-text"><b>CONTACTO:</b></h5>
+                <ul>
+                    <a class="grey-text text-lighten-3" href="https://www.facebook.com/GAAB-Store-101949139089956"
+                        target="_blank"><img src="../../recursos/img/icono/facebook_25px.png"> &nbsp; Facebook
+                    </a>
+                    &nbsp; &nbsp; &nbsp;
+                    <a class="grey-text text-lighten-3" href="#!"><img src="../../recursos/img/icono/twitter_25px.png"
+                            target="_blank"> &nbsp; Twitter
+                    </a>
+                </ul>
+                <a class="grey-text text-lighten-3" href="https://www.instagram.com/gaabstoresv/" target="_blank"><img
+                        src="../../recursos/img/icono/Instagram_25px.png">&nbsp; Instagram
+                </a>
+                &nbsp; &nbsp; &nbsp;
+                <a class="grey-text text-lighten-3" href="https://pin.it/24yTnOx" target="_blank"><img
+                        src="../../recursos/img/icono/pinterest_25px.png"> &nbsp; Pinterest
+                </a>
+            </div>
+            <div class="col s12 m4 ">
+                <h5 class="white-text"><b>SERVICIO AL CLIENTE:</b></h5>
+                <ul>
+                    <li><a class="grey-text text-lighten-3" href="../sitio_publico/soporte.html"> Soporte en linea</a>
+                    </li>
+                    <li><a class="grey-text text-lighten-3" href="../sitio_publico/terminos.html">Términos y
+                            condiciones</a></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!--Insertamos derechos de autor-->
+        <div class="footer-copyright">
+            <div class="container">
+                © 2022 Copyright
+            </div>
+        </div>
+    </footer>
+    <!--JavaScript al final de body para optimizar-->
+    <script src="../../recursos/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../controladores/componentes.js"></script>
+    <script src="../../controladores/publico/mis_pedidos.js"></script>
+
+</body>
+
+</html>
