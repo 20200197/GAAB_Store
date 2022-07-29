@@ -34,7 +34,8 @@
                 <form method="post" id="search-form">
                     <div class="input-field col s6 m4">
                         <i class="material-icons prefix">search</i>
-                        <input id="search" type="text" name="search" placeholder="Busque por nombre de producto o categoría..." required>
+                        <input id="search" type="text" name="search"
+                            placeholder="Busque por nombre de producto o categoría..." required>
                         <label for="search">Buscador</label>
                     </div>
                     <div class="input-field col s6 m4">
@@ -47,6 +48,10 @@
                     <a class="btn modal-trigger right" onclick="openCreate()" id="boton_agregar">
                         <i class="material-icons">add</i>
                     </a>
+                    <!-- Enlace para generar un reporte en formato PDF -->
+                    <a onclick="openReport()" class="btn-floating waves-effect amber tooltipped"
+                        data-tooltip="Reporte">
+                        <i class="material-icons">assignment</i></a>
                 </div>
             </div>
             <!--Tabla de clientes-->

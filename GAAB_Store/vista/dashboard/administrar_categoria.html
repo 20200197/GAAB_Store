@@ -45,6 +45,10 @@
                     </div>
                 </form>
                 <a onclick="openCreate()" class="btn right" id="boton_agregar"><i class="material-icons">add</i></a>
+                <!-- Enlace para generar un reporte en formato PDF -->
+                <a onclick="openOpciones()" class="btn-floating waves-effect amber tooltipped right"
+                    data-tooltip="Reporte">
+                    <i class="material-icons">assignment</i></a>
             </div>
             <!--Tabla de clientes-->
             <table class="responsive-table">
@@ -119,8 +123,9 @@
                                     <div class="col s12 m12 l12">
                                         <h6>Nombre categoria:</h6>
                                         <div class="input-field col s12 m12 l12">
-                                            <input id="nombre_categoria" name="nombre_categoria" type="text" pattern="[A-Za-z]{1,50}"
-                                                class="validate" placeholder="ingrese nueva categoria" required>
+                                            <input id="nombre_categoria" name="nombre_categoria" type="text"
+                                                pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" class="validate"
+                                                placeholder="ingrese nueva categoria" required>
                                         </div>
                                     </div>
                                 </div>
@@ -158,8 +163,9 @@
                                     <div class="col s12 m12 l12">
                                         <h6>Nombre categoria:</h6>
                                         <div class="input-field col s12 m12 l12">
-                                            <input id="nombre_categoria" name="nombre_categoria" type="text" pattern="[A-Za-z]{1,50}"  
-                                                class="validate" placeholder="ingrese nueva categoria" required>
+                                            <input id="nombre_categoria" name="nombre_categoria" type="text"
+                                                pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" class="validate"
+                                                placeholder="ingrese nueva categoria" required>
                                         </div>
                                     </div>
                                 </div>
@@ -184,7 +190,7 @@
     </footer>
     <!--JavaScript al final de body para optimizar-->
     <script src="../../recursos/js/materialize.min.js "></script>
-    <script src="../../recursos/js/sweetalert.min.js"></script>
+    <script src="../../recursos/js/sweetalert2.all.min.js"></script>
     <script src="../../controladores/componentes.js"></script>
     <script src="../../controladores/dashboard/logueado.js"></script>
     <script src="../../controladores/dashboard/administrar_categoria.js"></script>

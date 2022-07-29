@@ -44,7 +44,12 @@
                         </button>
                     </div>
                 </form>
-                <a onclick="openCreate()" class="btn right" id="boton_agregar"><i class="material-icons">add</i></a>
+                <div class="col s12 m4 l4 right-align">
+                    <a onclick="openCreate()" class="btn right" id="boton_agregar"><i class="material-icons">add</i></a>
+                    <!-- Enlace para generar un reporte en formato PDF -->
+                    <a onclick="openReport()" class="btn-floating waves-effect amber tooltipped" data-tooltip="Reporte">
+                        <i class="material-icons">assignment</i></a>
+                </div>
             </div>
             <!--Tabla de clientes-->
             <table class="responsive-table">
@@ -120,7 +125,8 @@
                                         <div class="col s12 m12">
                                             <h6>Nombre del tipo de auto:</h6>
                                             <div class="input-field col s12 m12 l12">
-                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate" pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" 
+                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate"
+                                                    pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}"
                                                     placeholder="ingrese tipo de auto" required>
                                             </div>
                                         </div>
@@ -162,7 +168,8 @@
                                         <div class="col s12 m12">
                                             <h6>Nombre del tipo de auto:</h6>
                                             <div class="input-field col s12 m12 l12">
-                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate" pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}" 
+                                                <input id="tipo_auto" name="tipo_auto" type="text" class="validate"
+                                                    pattern="[a-zA-ZñÑáÁéÉíÍóÓúÚ\s]{1,50}"
                                                     placeholder="ingrese tipo de auto" required>
                                             </div>
                                         </div>
