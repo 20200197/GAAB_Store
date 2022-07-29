@@ -1,113 +1,125 @@
-const API_CLIENTE = SERVER + 'publico/cliente.php?action='
-const API = SERVER + 'publico/cliente.php?action='
+const API_CLIENTE = SERVER + "publico/cliente.php?action=";
+const API = SERVER + "publico/cliente.php?action=";
 
-document.addEventListener('DOMContentLoaded', function () {
-  M.Sidenav.init(document.querySelectorAll('.sidenav'));
-  M.Slider.init(document.querySelectorAll('.slider'));
-  M.Carousel.init(document.querySelectorAll('.carousel'));
-  var elems = document.querySelectorAll('select');
+document.addEventListener("DOMContentLoaded", function () {
+  M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  M.Slider.init(document.querySelectorAll(".slider"));
+  M.Carousel.init(document.querySelectorAll(".carousel"));
+  var elems = document.querySelectorAll("select");
   var instances = M.FormSelect.init(elems);
-  var elems = document.querySelectorAll('.dropdown-trigger');
+  var elems = document.querySelectorAll(".dropdown-trigger");
   // Se define una variable para establecer las opciones del componente Modal.
   let options = {
-    endingTop: '20%',
-    dismissible: false
-  }
+    endingTop: "20%",
+    dismissible: false,
+  };
   // Se inicializa el componente Modal para que funcionen las cajas de diálogo.
-  M.Modal.init(document.querySelectorAll('.modal'), options);
+  M.Modal.init(document.querySelectorAll(".modal"), options);
 
   readInfo();
-  fetch(API_CLIENTE + 'fillInputs', {
-    method: 'get'
+  fetch(API_CLIENTE + "fillInputs", {
+    method: "get",
   }).then(function (request) {
     if (request.ok) {
       request.json().then(function (response) {
         if (response.session) {
           if (response.status) {
-            document.getElementById('id').value = response.dataset.id_cliente;
-            document.getElementById('nombre').value = response.dataset.nombre_cliente;
-            document.getElementById('apellido').value = response.dataset.apellido_cliente;
-            document.getElementById('telefono').value = response.dataset.telefono_cliente;
-            document.getElementById('usuario').value = response.dataset.usuario_cliente;
-            document.getElementById('correo').value = response.dataset.correo_cliente;
-            document.getElementById('dui').value = response.dataset.dui_cliente;
-            document.getElementById('imagen_profile').setAttribute('src', SERVER + 'imagenes/clientes/' + response.dataset.imagen_perfil_cliente);
+            document.getElementById("id").value = response.dataset.id_cliente;
+            document.getElementById("nombre").value =
+              response.dataset.nombre_cliente;
+            document.getElementById("apellido").value =
+              response.dataset.apellido_cliente;
+            document.getElementById("telefono").value =
+              response.dataset.telefono_cliente;
+            document.getElementById("usuario").value =
+              response.dataset.usuario_cliente;
+            document.getElementById("correo").value =
+              response.dataset.correo_cliente;
+            document.getElementById("dui").value = response.dataset.dui_cliente;
+            document
+              .getElementById("imagen_profile")
+              .setAttribute(
+                "src",
+                SERVER +
+                  "imagenes/clientes/" +
+                  response.dataset.imagen_perfil_cliente
+              );
           }
         }
-      })
-    }
-  })
-});
-
-
-// Método manejador de eventos que se ejecuta cuando se envía el formulario de editar perfil.
-document.getElementById('profile-form').addEventListener('submit', function (event) {
-  // Se evita recargar la página web después de enviar el formulario.
-  event.preventDefault();
-  // Petición para actualizar los datos personales del usuario.
-  fetch(API_CLIENTE + 'editProfile', {
-    method: 'post',
-    body: new FormData(document.getElementById('profile-form'))
-  }).then(function (request) {
-    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-    if (request.ok) {
-      // Se obtiene la respuesta en formato JSON.
-      request.json().then(function (response) {
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-        if (response.status) {
-          sweetAlert(1, response.message, 'index.html');
-        } else {
-          sweetAlert(2, response.exception, null);
-        }
       });
-    } else {
-      console.log(request.status + ' ' + request.statusText);
     }
   });
 });
 
+// Método manejador de eventos que se ejecuta cuando se envía el formulario de editar perfil.
+document
+  .getElementById("profile-form")
+  .addEventListener("submit", function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Petición para actualizar los datos personales del usuario.
+    fetch(API_CLIENTE + "editProfile", {
+      method: "post",
+      body: new FormData(document.getElementById("profile-form")),
+    }).then(function (request) {
+      // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+      if (request.ok) {
+        // Se obtiene la respuesta en formato JSON.
+        request.json().then(function (response) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+          if (response.status) {
+            sweetAlert(1, response.message, "index.html");
+          } else {
+            sweetAlert(2, response.exception, null);
+          }
+        });
+      } else {
+        console.log(request.status + " " + request.statusText);
+      }
+    });
+  });
 
 // Función para preparar el formulario al momento de modificar un registro.
 function openUpdate(id) {
   // Se abre la caja de diálogo (modal) que contiene el formulario.
-  M.Modal.getInstance(document.getElementById('update-modal')).open();
+  M.Modal.getInstance(document.getElementById("update-modal")).open();
   // document.getElementById('id_id').value = id;
-
 }
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de cambiar contraseña.
-document.getElementById('update-form').addEventListener('submit', function (event) {
-  // Se evita recargar la página web después de enviar el formulario.
-  event.preventDefault();
-  // Petición para actualizar la contraseña.
-  fetch(API_CLIENTE + 'changePassword', {
-    method: 'post',
-    body: new FormData(document.getElementById('update-form'))
-  }).then(function (request) {
-    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-    if (request.ok) {
-      // Se obtiene la respuesta en formato JSON.
-      request.json().then(function (response) {
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-        if (response.status) {
-          // Se muestra un mensaje de éxito.
-          sweetAlert(1, response.message, 'index.html');
-        } else {
-          sweetAlert(2, response.exception, null);
-        }
-      });
-    } else {
-      console.log(request.status + ' ' + request.statusText);
-    }
+document
+  .getElementById("update-form")
+  .addEventListener("submit", function (event) {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Petición para actualizar la contraseña.
+    fetch(API_CLIENTE + "changePassword", {
+      method: "post",
+      body: new FormData(document.getElementById("update-form")),
+    }).then(function (request) {
+      // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+      if (request.ok) {
+        // Se obtiene la respuesta en formato JSON.
+        request.json().then(function (response) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+          if (response.status) {
+            // Se muestra un mensaje de éxito.
+            sweetAlert(1, response.message, "index.html");
+          } else {
+            sweetAlert(2, response.exception, null);
+          }
+        });
+      } else {
+        console.log(request.status + " " + request.statusText);
+      }
+    });
   });
-});
-
 
 //Función para leer info
 function readInfo() {
   // Petición para obtener en nombre del usuario que ha iniciado sesión.
-  fetch(API + 'fillInputs', {
-    method: 'get'
+  fetch(API + "fillInputs", {
+    method: "get",
   }).then(function (request) {
     // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
     if (request.ok) {
@@ -137,7 +149,7 @@ function readInfo() {
                                 <div class="col s4 m4">
                                     <ul id="nav-mobile" class="right hide-on-med-and-down">
                                         <li><a class="waves-effect waves-red btn-danger" id="boton1"
-                                                href="../sitio_publico/carrito.html">$${response.dataset.total}<img
+                                                href="carrito.html">$${response.total}<img
                                                     src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
     
                                         <li>
@@ -175,13 +187,11 @@ function readInfo() {
                                 <a><span class="white-text email">${response.dataset.correo_cliente}</span></a>
                             </div>
                         </li>
-                        <li><a class="waves-effect waves-red btn-danger" id="boton1">$${response.dataset.total}<img
+                        <li><a class="waves-effect waves-red btn-danger" id="boton1" href="carrito.html">$${response.total}<img
                                     src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
                         <li><a href="productos.html" class="waves-effect waves-red btn-danger">Productos</a>
                         </li>
                         <li><a href="categorias.html" class="waves-effect waves-red btn-danger">Catergorías</a>
-                        </li>
-                        <li class="tab" id="tabla"><a href="categorias.html" class="waves-effect waves-red btn-danger">Catergorías</a>
                         </li>
                         <li><a href="soporte.html" class="waves-effect waves-red btn-danger">Soporte</a></li>
                         <li><a href="quienes_somos.html" class="waves-effect waves-red btn-danger">¿Quiénes
@@ -200,36 +210,36 @@ function readInfo() {
                     </ul>
                     `;
 
-            document.querySelector('header').innerHTML = header;
+            document.querySelector("header").innerHTML = header;
             //Opciones del dropdwon-trigger
             let options = {
-              alignment: 'right'
-
-            }
+              alignment: "right",
+            };
             // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
-            M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), options);
+            M.Dropdown.init(
+              document.querySelectorAll(".dropdown-trigger"),
+              options
+            );
             // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+            M.Sidenav.init(document.querySelectorAll(".sidenav"));
           } else {
-            sweetAlert(3, response.exception, 'index.html');
+            sweetAlert(3, response.exception, "index.html");
           }
         } else {
-          sweetAlert(3, response.exception, 'login.html');
+          sweetAlert(3, response.exception, "login.html");
         }
       });
     } else {
-      console.log(request.status + ' ' + request.statusText);
+      console.log(request.status + " " + request.statusText);
     }
   });
 }
 
 //Se coloca guión al digitar teléfono
-document.getElementById('telefono').addEventListener('keyup', function (evt) {
-  var telefono = document.getElementById('telefono').value.length;
-  var valor = document.getElementById('telefono').value;
+document.getElementById("telefono").addEventListener("keyup", function (evt) {
+  var telefono = document.getElementById("telefono").value.length;
+  var valor = document.getElementById("telefono").value;
   if (telefono == 4) {
-      document.getElementById('telefono').value = valor + '-';
+    document.getElementById("telefono").value = valor + "-";
   }
 });
-
-

@@ -1,41 +1,41 @@
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API_CATEGORIA = SERVER + 'publico/categoria.php?action=';
-const API = SERVER + 'publico/cliente.php?action='
+const API_CATEGORIA = SERVER + "publico/categoria.php?action=";
+const API = SERVER + "publico/cliente.php?action=";
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', function () {
-    // Se llama a la función que muestra las categorías disponibles.
-    readAllCategorias();
-    // Se define una variable para establecer las opciones del componente Slider.
-    let options = {
-        height: 300
-    }
-    //LLamamos la info
-    readInfo();
-    // Se inicializa el componente Slider para que funcione el carrusel de imágenes.
-    M.Slider.init(document.querySelectorAll('.slider'), options);
+document.addEventListener("DOMContentLoaded", function () {
+  // Se llama a la función que muestra las categorías disponibles.
+  readAllCategorias();
+  // Se define una variable para establecer las opciones del componente Slider.
+  let options = {
+    height: 300,
+  };
+  //LLamamos la info
+  readInfo();
+  // Se inicializa el componente Slider para que funcione el carrusel de imágenes.
+  M.Slider.init(document.querySelectorAll(".slider"), options);
 });
 
 // Función para obtener y mostrar las categorías disponibles.
 function readAllCategorias() {
-    // Petición para solicitar los datos de las categorías.
-    fetch(API_CATEGORIA + 'readAll', {
-        method: 'get'
-    }).then(function (request) {
-        // Se verifica si la petición es satisfactoria, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            // Se obtiene la respuesta en formato JSON.
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es correcta, de lo contrario se muestra un mensaje con la excepción.
-                if (response.status) {
-                    let content = '';
-                    let url = '';
-                    // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
-                    response.dataset.map(function (row) {
-                        // Se define una dirección con los datos de cada categoría para mostrar sus productos en otra página web.
-                        url = `producto_categoria.html?id=${row.id_producto}&id_categoria=${row.id_categoria_producto}&nombre=${row.nombre_categoria}`;
-                        // Se crean y concatenan las tarjetas con los datos de cada categoría.
-                        content += `
+  // Petición para solicitar los datos de las categorías.
+  fetch(API_CATEGORIA + "readAll", {
+    method: "get",
+  }).then(function (request) {
+    // Se verifica si la petición es satisfactoria, de lo contrario se muestra un mensaje en la consola indicando el problema.
+    if (request.ok) {
+      // Se obtiene la respuesta en formato JSON.
+      request.json().then(function (response) {
+        // Se comprueba si la respuesta es correcta, de lo contrario se muestra un mensaje con la excepción.
+        if (response.status) {
+          let content = "";
+          let url = "";
+          // Se recorre el conjunto de registros devuelto por la API (dataset) fila por fila a través del objeto row.
+          response.dataset.map(function (row) {
+            // Se define una dirección con los datos de cada categoría para mostrar sus productos en otra página web.
+            url = `producto_categoria.html?id=${row.id_producto}&id_categoria=${row.id_categoria_producto}&nombre=${row.nombre_categoria}`;
+            // Se crean y concatenan las tarjetas con los datos de cada categoría.
+            content += `
                         <div class="col s12 m6 l3">
                         <a href="${url}">
                             <div class="card">
@@ -50,38 +50,38 @@ function readAllCategorias() {
                     </div>
 
                         `;
-                    });
-                    // Se agregan las tarjetas a la etiqueta div mediante su id para mostrar las categorías.
-                    document.getElementById('categoria').innerHTML = content;
-                    // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
-                    M.Tooltip.init(document.querySelectorAll('.tooltipped'));
-                } else {
-                    // Se asigna al título del contenido un mensaje de error cuando no existen datos para mostrar.
-                    let title = `<i class="material-icons small">cloud_off</i><span class="red-text">${response.exception}</span>`;
-                    document.getElementById('title').innerHTML = title;
-                }
-            });
+          });
+          // Se agregan las tarjetas a la etiqueta div mediante su id para mostrar las categorías.
+          document.getElementById("categoria").innerHTML = content;
+          // Se inicializa el componente Tooltip para que funcionen las sugerencias textuales.
+          M.Tooltip.init(document.querySelectorAll(".tooltipped"));
         } else {
-            console.log(request.status + ' ' + request.statusText);
+          // Se asigna al título del contenido un mensaje de error cuando no existen datos para mostrar.
+          let title = `<i class="material-icons small">cloud_off</i><span class="red-text">${response.exception}</span>`;
+          document.getElementById("title").innerHTML = title;
         }
-    });
+      });
+    } else {
+      console.log(request.status + " " + request.statusText);
+    }
+  });
 }
 
 //Función para leer info
 function readInfo() {
-    // Petición para obtener en nombre del usuario que ha iniciado sesión.
-    fetch(API + 'fillInputs', {
-      method: 'get'
-    }).then(function (request) {
-      // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-      if (request.ok) {
-        // Se obtiene la respuesta en formato JSON.
-        request.json().then(function (response) {
-          // Se revisa si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
-          if (response.session) {
-            // Se comprueba si la respuesta es satisfactoria, de lo contrario se direcciona a la página web principal.
-            if (response.status) {
-              const header = `
+  // Petición para obtener en nombre del usuario que ha iniciado sesión.
+  fetch(API + "fillInputs", {
+    method: "get",
+  }).then(function (request) {
+    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+    if (request.ok) {
+      // Se obtiene la respuesta en formato JSON.
+      request.json().then(function (response) {
+        // Se revisa si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
+        if (response.session) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se direcciona a la página web principal.
+          if (response.status) {
+            const header = `
                       <!--Colocamos encabezado-->
                       <nav class="nav-extended" id="encabezado">
                           <div class="col s12 m12">
@@ -101,7 +101,7 @@ function readInfo() {
                                   <div class="col s4 m4">
                                       <ul id="nav-mobile" class="right hide-on-med-and-down">
                                           <li><a class="waves-effect waves-red btn-danger" id="boton1"
-                                                  href="../sitio_publico/carrito.html">$${response.dataset.total}<img
+                                                  href="carrito.html">$${response.total}<img
                                                       src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
       
                                           <li>
@@ -139,7 +139,7 @@ function readInfo() {
                                   <a><span class="white-text email">${response.dataset.correo_cliente}</span></a>
                               </div>
                           </li>
-                          <li><a class="waves-effect waves-red btn-danger" id="boton1">$${response.dataset.total}<img
+                          <li><a class="waves-effect waves-red btn-danger" id="boton1" href="carrito.html">$${response.total}<img
                                       src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
                           <li><a href="productos.html" class="waves-effect waves-red btn-danger">Productos</a>
                           </li>
@@ -161,33 +161,35 @@ function readInfo() {
                           <li><a onClick="logOut()">Cerrar Sesión</a></li>
                       </ul>
                       `;
-  
-              document.querySelector('header').innerHTML = header;
-              //Opciones del dropdwon-trigger
-              let options = {
-                alignment: 'right'
-  
-              }
-              // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
-              M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), options);
-              // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-              M.Sidenav.init(document.querySelectorAll('.sidenav'));
-            } else {
-              sweetAlert(3, response.exception, 'index.html');
-            }
+
+            document.querySelector("header").innerHTML = header;
+            //Opciones del dropdwon-trigger
+            let options = {
+              alignment: "right",
+            };
+            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
+            M.Dropdown.init(
+              document.querySelectorAll(".dropdown-trigger"),
+              options
+            );
+            // Se inicializa el componente Sidenav para que funcione la navegación lateral.
+            M.Sidenav.init(document.querySelectorAll(".sidenav"));
           } else {
-            readInfoSinLogueado();
+            sweetAlert(3, response.exception, "index.html");
           }
-        });
-      } else {
-        console.log(request.status + ' ' + request.statusText);
-      }
-    });
-  }
-  
-  //Función de si no se ha logueado
-  function readInfoSinLogueado() {
-    const header = `
+        } else {
+          readInfoSinLogueado();
+        }
+      });
+    } else {
+      console.log(request.status + " " + request.statusText);
+    }
+  });
+}
+
+//Función de si no se ha logueado
+function readInfoSinLogueado() {
+  const header = `
                       <!--Colocamos encabezado-->
                       <nav class="nav-extended" id="encabezado">
                           <div class="col s12 m12">
@@ -250,12 +252,11 @@ function readInfo() {
                       </ul>
                       </div>
                       `;
-    document.querySelector('header').innerHTML = header;
-    //Opciones del dropdwon-trigger
-    let options = {
-      alignment: 'right'
-  
-    }
-    // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
-  }
+  document.querySelector("header").innerHTML = header;
+  //Opciones del dropdwon-trigger
+  let options = {
+    alignment: "right",
+  };
+  // Se inicializa el componente Sidenav para que funcione la navegación lateral.
+  M.Sidenav.init(document.querySelectorAll(".sidenav"));
+}

@@ -1,97 +1,96 @@
-const API_CLIENTE = SERVER + 'publico/cliente.php?action='
-const API = SERVER + 'publico/cliente.php?action='
+const API_CLIENTE = SERVER + "publico/cliente.php?action=";
+const API = SERVER + "publico/cliente.php?action=";
 
-document.addEventListener('DOMContentLoaded', function () {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
-    M.Slider.init(document.querySelectorAll('.slider'));
-    M.Carousel.init(document.querySelectorAll('.carousel'));
-    var elems = document.querySelectorAll('select');
-    var instances = M.FormSelect.init(elems);
-    var elems = document.querySelectorAll('.dropdown-trigger');
-    let options = {
-        alignment: 'left'
+document.addEventListener("DOMContentLoaded", function () {
+  M.Sidenav.init(document.querySelectorAll(".sidenav"));
+  M.Slider.init(document.querySelectorAll(".slider"));
+  M.Carousel.init(document.querySelectorAll(".carousel"));
+  var elems = document.querySelectorAll("select");
+  var instances = M.FormSelect.init(elems);
+  var elems = document.querySelectorAll(".dropdown-trigger");
+  let options = {
+    alignment: "left",
+  };
+  var instances = M.Dropdown.init(elems, options);
+  readInfo();
 
-    };
-    var instances = M.Dropdown.init(elems, options);
-    readInfo();
-
-    fetch(API_CLIENTE + 'getUser', {
-        method: 'get',
-    }).then(function (request) {
-        if (request.ok) {
-            request.json().then(function (response) {
-                if (response.status) {
-                    //sweetAlert(1, response.exception, null);
-                }
-            })
-        } else {
-            console.log(request.status + ' ' + request.statusText);
+  fetch(API_CLIENTE + "getUser", {
+    method: "get",
+  }).then(function (request) {
+    if (request.ok) {
+      request.json().then(function (response) {
+        if (response.status) {
+          //sweetAlert(1, response.exception, null);
         }
-    })
+      });
+    } else {
+      console.log(request.status + " " + request.statusText);
+    }
+  });
 });
 
-document.getElementById('registro').addEventListener('submit', function (event) {
+document
+  .getElementById("registro")
+  .addEventListener("submit", function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Petición para registrar el primer usuario del sitio privado.
-    fetch(API_CLIENTE + 'register', {
-        method: 'post',
-        body: new FormData(document.getElementById('registro'))
+    fetch(API_CLIENTE + "register", {
+      method: "post",
+      body: new FormData(document.getElementById("registro")),
     }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                if (response.status) {
-                    sweetAlert(1, response.message, 'login.html');
-                    // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
-                    M.updateTextFields();
-                } else {
-                    sweetAlert(2, response.exception, null);
-                }
-            });
-        } else {
-            console.log(request.status + ' ' + request.statusText);
-        }
+      // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+      if (request.ok) {
+        request.json().then(function (response) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+          if (response.status) {
+            sweetAlert(1, response.message, "login.html");
+            // Se actualizan los campos para que las etiquetas (labels) no queden sobre los datos.
+            M.updateTextFields();
+          } else {
+            sweetAlert(2, response.exception, null);
+          }
+        });
+      } else {
+        console.log(request.status + " " + request.statusText);
+      }
     });
-});
+  });
 
 //Colocación de guión automatico
-document.getElementById('dui').addEventListener('input', function (evt) {
-    let value = this.value.replace('-', '');
-    //comienzo de linea  Digito numerico   Final de linea 
-    if (value.match(/^(\d{2})(\d{3}){2}(\w{1})$/)) {
-        value = value.replace(/^(\d{2})(\d{3})(\d{3})(\w{1})$/, '$1$2$3-$4');
-    }
-    this.value = value;
+document.getElementById("dui").addEventListener("input", function (evt) {
+  let value = this.value.replace("-", "");
+  //comienzo de linea  Digito numerico   Final de linea
+  if (value.match(/^(\d{2})(\d{3}){2}(\w{1})$/)) {
+    value = value.replace(/^(\d{2})(\d{3})(\d{3})(\w{1})$/, "$1$2$3-$4");
+  }
+  this.value = value;
 });
-
 
 //Se coloca guión al digitar teléfono
-document.getElementById('telefono').addEventListener('keyup', function (evt) {
-    var telefono = document.getElementById('telefono').value.length;
-    var valor = document.getElementById('telefono').value;
-    if (telefono == 4) {
-        document.getElementById('telefono').value = valor + '-';
-    }
+document.getElementById("telefono").addEventListener("keyup", function (evt) {
+  var telefono = document.getElementById("telefono").value.length;
+  var valor = document.getElementById("telefono").value;
+  if (telefono == 4) {
+    document.getElementById("telefono").value = valor + "-";
+  }
 });
-
 
 //Función para leer info
 function readInfo() {
-    // Petición para obtener en nombre del usuario que ha iniciado sesión.
-    fetch(API + 'fillInputs', {
-        method: 'get'
-    }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            // Se obtiene la respuesta en formato JSON.
-            request.json().then(function (response) {
-                // Se revisa si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
-                if (response.session) {
-                    // Se comprueba si la respuesta es satisfactoria, de lo contrario se direcciona a la página web principal.
-                    if (response.status) {
-                        const header = `
+  // Petición para obtener en nombre del usuario que ha iniciado sesión.
+  fetch(API + "fillInputs", {
+    method: "get",
+  }).then(function (request) {
+    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+    if (request.ok) {
+      // Se obtiene la respuesta en formato JSON.
+      request.json().then(function (response) {
+        // Se revisa si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
+        if (response.session) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se direcciona a la página web principal.
+          if (response.status) {
+            const header = `
                       <!--Colocamos encabezado-->
                       <nav class="nav-extended" id="encabezado">
                           <div class="col s12 m12">
@@ -111,7 +110,7 @@ function readInfo() {
                                   <div class="col s4 m4">
                                       <ul id="nav-mobile" class="right hide-on-med-and-down">
                                           <li><a class="waves-effect waves-red btn-danger" id="boton1"
-                                                  href="../sitio_publico/carrito.html">$${response.dataset.total}<img
+                                                  href="carrito.html">$${response.total}<img
                                                       src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
       
                                           <li>
@@ -149,7 +148,7 @@ function readInfo() {
                                   <a><span class="white-text email">${response.dataset.correo_cliente}</span></a>
                               </div>
                           </li>
-                          <li><a class="waves-effect waves-red btn-danger" id="boton1">$${response.dataset.total}<img
+                          <li><a class="waves-effect waves-red btn-danger" id="boton1">$${response.total}<img
                                       src="../../recursos/img/icono/shopping_cart_25px.png"></a></li>
                           <li><a href="productos.html" class="waves-effect waves-red btn-danger">Productos</a>
                           </li>
@@ -172,32 +171,34 @@ function readInfo() {
                       </ul>
                       `;
 
-                        document.querySelector('header').innerHTML = header;
-                        //Opciones del dropdwon-trigger
-                        let options = {
-                            alignment: 'right'
-
-                        }
-                        // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
-                        M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), options);
-                        // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-                        M.Sidenav.init(document.querySelectorAll('.sidenav'));
-                    } else {
-                        sweetAlert(3, response.exception, 'index.html');
-                    }
-                } else {
-                    readInfoSinLogueado();
-                }
-            });
+            document.querySelector("header").innerHTML = header;
+            //Opciones del dropdwon-trigger
+            let options = {
+              alignment: "right",
+            };
+            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
+            M.Dropdown.init(
+              document.querySelectorAll(".dropdown-trigger"),
+              options
+            );
+            // Se inicializa el componente Sidenav para que funcione la navegación lateral.
+            M.Sidenav.init(document.querySelectorAll(".sidenav"));
+          } else {
+            sweetAlert(3, response.exception, "index.html");
+          }
         } else {
-            console.log(request.status + ' ' + request.statusText);
+          readInfoSinLogueado();
         }
-    });
+      });
+    } else {
+      console.log(request.status + " " + request.statusText);
+    }
+  });
 }
 
 //Función de si no se ha logueado
 function readInfoSinLogueado() {
-    const header = `
+  const header = `
                       <!--Colocamos encabezado-->
                       <nav class="nav-extended" id="encabezado">
                           <div class="col s12 m12">
@@ -260,13 +261,11 @@ function readInfoSinLogueado() {
                       </ul>
                       </div>
                       `;
-    document.querySelector('header').innerHTML = header;
-    //Opciones del dropdwon-trigger
-    let options = {
-        alignment: 'right'
-
-    }
-    // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+  document.querySelector("header").innerHTML = header;
+  //Opciones del dropdwon-trigger
+  let options = {
+    alignment: "right",
+  };
+  // Se inicializa el componente Sidenav para que funcione la navegación lateral.
+  M.Sidenav.init(document.querySelectorAll(".sidenav"));
 }
-
