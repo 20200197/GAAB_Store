@@ -1,26 +1,26 @@
 /*
-*   Controlador de uso general en las páginas web del sitio privado cuando se ha iniciado sesión.
-*   Sirve para manejar las plantillas del encabezado y pie del documento.
-*/
+ *   Controlador de uso general en las páginas web del sitio privado cuando se ha iniciado sesión.
+ *   Sirve para manejar las plantillas del encabezado y pie del documento.
+ */
 
 // Constante para establecer la ruta y parámetros de comunicación con la API.
-const API = SERVER + 'dashboard/usuarios.php?action=';
+const API = SERVER + "dashboard/usuarios.php?action=";
 
 // Método manejador de eventos que se ejecuta cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', function () {
-    // Petición para obtener en nombre del usuario que ha iniciado sesión.
-    fetch(API + 'readProfile', {
-        method: 'get'
-    }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            // Se obtiene la respuesta en formato JSON.
-            request.json().then(function (response) {
-                // Se revisa si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
-                if (response.session) {
-                    // Se comprueba si la respuesta es satisfactoria, de lo contrario se direcciona a la página web principal.
-                    if (response.status) {
-                        const header = `
+document.addEventListener("DOMContentLoaded", function () {
+  // Petición para obtener en nombre del usuario que ha iniciado sesión.
+  fetch(API + "readProfile", {
+    method: "get",
+  }).then(function (request) {
+    // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+    if (request.ok) {
+      // Se obtiene la respuesta en formato JSON.
+      request.json().then(function (response) {
+        // Se revisa si el usuario está autenticado, de lo contrario se envía a iniciar sesión.
+        if (response.session) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se direcciona a la página web principal.
+          if (response.status) {
+            const header = `
                         <nav class="nav-extended" id="encabezado">
                             <div class="row" id="otro">
                                 <div class="col s12 m1 " id="nave">
@@ -100,60 +100,66 @@ document.addEventListener('DOMContentLoaded', function () {
                         </ul>
                         `;
 
-                        document.querySelector('header').innerHTML = header;
-                        //Opciones del dropdwon-trigger
-                        let options = {
-                            alignment: 'right'
-
-                        }
-                        // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
-                        M.Dropdown.init(document.querySelectorAll('.dropdown-trigger'), options);
-                        // Se inicializa el componente Sidenav para que funcione la navegación lateral.
-                        M.Sidenav.init(document.querySelectorAll('.sidenav'));
-                    } else {
-                        sweetAlert(3, response.exception, 'index.html');
-                    }
-                } else {
-                    location.href = 'index.html';
-                }
-            });
+            document.querySelector("header").innerHTML = header;
+            //Opciones del dropdwon-trigger
+            let options = {
+              alignment: "right",
+            };
+            // Se inicializa el componente Dropdown para que funcione la lista desplegable en los menús.
+            M.Dropdown.init(
+              document.querySelectorAll(".dropdown-trigger"),
+              options
+            );
+            // Se inicializa el componente Sidenav para que funcione la navegación lateral.
+            M.Sidenav.init(document.querySelectorAll(".sidenav"));
+          } else {
+            sweetAlert(3, response.exception, "index.html");
+          }
         } else {
-            console.log(request.status + ' ' + request.statusText);
+          location.href = "index.html";
         }
-    });
+      });
+    } else {
+      console.log(request.status + " " + request.statusText);
+    }
+  });
 });
-
 
 // Función para abrir el modal de cerrarCesion
 function openLog() {
-    // Se abre la caja de diálogo (modal) que contiene el formulario.
-    M.Modal.getInstance(document.getElementById('log-modal')).open();
-    document.getElementById('imagen_estado').setAttribute('src', '../../recursos/img/imagenes/log.png');
-    document.getElementById('titulo_im').textContent = 'Cerrar Sesión'
-    document.getElementById('texto_im').textContent = '¿Esta seguro de cerrar sesión?'
+  // Se abre la caja de diálogo (modal) que contiene el formulario.
+  M.Modal.getInstance(document.getElementById("log-modal")).open();
+  document
+    .getElementById("imagen_estado")
+    .setAttribute("src", "../../recursos/img/imagenes/log.png");
+  document.getElementById("titulo_im").textContent = "Cerrar Sesión";
+  document.getElementById("texto_im").textContent =
+    "¿Esta seguro de cerrar sesión?";
 }
 
 // Método manejador de eventos que se ejecuta cuando se envía el formulario de guardar.
-document.getElementById('log-form').addEventListener('submit', function (event) {
+document
+  .getElementById("log-form")
+  .addEventListener("submit", function (event) {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-     // Se verifica si fue cliqueado el botón Sí para hacer la petición de cerrar sesión, de lo contrario se muestra un mensaje.
-     fetch(API + 'logOut', {
-        method: 'get'
+    // Se verifica si fue cliqueado el botón Sí para hacer la petición de cerrar sesión, de lo contrario se muestra un mensaje.
+    fetch(API + "logOut", {
+      method: "get",
     }).then(function (request) {
-        // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
-        if (request.ok) {
-            // Se obtiene la respuesta en formato JSON.
-            request.json().then(function (response) {
-                // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-                if (response.status) {
-                    sweetAlert(1, response.message, 'index.html');
-                } else {
-                    sweetAlert(2, response.exception, null);
-                }
-            });
-        } else {
-            console.log(request.status + ' ' + request.statusText);
-        }
+      // Se verifica si la petición es correcta, de lo contrario se muestra un mensaje en la consola indicando el problema.
+      if (request.ok) {
+        // Se obtiene la respuesta en formato JSON.
+        request.json().then(function (response) {
+          // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+          if (response.status) {
+            sweetAlert(1, response.message, "index.html");
+          } else {
+            sweetAlert(2, response.exception, null);
+          }
+        });
+      } else {
+        console.log(request.status + " " + request.statusText);
+      }
     });
-});
+  });
